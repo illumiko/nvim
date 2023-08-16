@@ -48,13 +48,40 @@ vim.g.netrw_winsize = 25
 vim.o.laststatus = 3
 vim.cmd([[
 set statusline=
-set statusline+=\ %<%f
-set statusline+=\ %{&modified?'[+]':''}
-set statusline+=%h%r
+set statusline+=%m
+set statusline+=%f
+set statusline+=\ 
+set statusline+=|
+set statusline+=\ 
+set statusline+=%{b:gitbranch}
 set statusline+=%=
-set statusline+=\ \ %-14(%l,%c%)
-set statusline+=\ %-10(%LL%)
-set statusline+=\ \ %P
+set statusline+=%{strftime(\"%H:%M\")}
+set statusline+=\ 
+set statusline+=|
+set statusline+=\ 
+set statusline+=%l
+set statusline+=/
+set statusline+=%L
+
+function! StatuslineGitBranch()
+  let b:gitbranch=""
+  if &modifiable
+    try
+      let l:dir=expand('%:p:h')
+      let l:gitrevparse = system("git -C ".l:dir." rev-parse --abbrev-ref HEAD")
+      if !v:shell_error
+        let b:gitbranch="(".substitute(l:gitrevparse, '\n', '', 'g').") "
+      endif
+    catch
+    endtry
+  endif
+endfunction
+
+augroup GetGitBranch
+  autocmd!
+  autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
+augroup END
+
 ]])
 
 -- Autocmd
