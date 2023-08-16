@@ -52,6 +52,7 @@ lazy.setup({
 	"mbbill/undotree",
 	"tpope/vim-fugitive",
 	"nvim-treesitter/nvim-treesitter-context",
+    "tpope/vim-commentary",
 
     -- Lsp
 	{
