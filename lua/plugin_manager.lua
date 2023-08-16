@@ -29,33 +29,31 @@ end
 
 -- Have packer use a popup window
 lazy.setup({
+    -- Telescope
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
 		dependencies = { 'nvim-lua/plenary.nvim' } 
 	},
 
+    -- Colorscheme
 	{ 'rose-pine/neovim', name = 'rose-pine'},
     { 'Tsuzat/NeoSolarized.nvim' },
 
+    -- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
 		events = { "BufEnter" },
 		build = ":TSUpdate",
-		config = config,
-	--dependencies = {
-	--	"nvim-treesitter/playground",
-	--	"windwp/nvim-ts-autotag",
-	--	"p00f/nvim-ts-rainbow",
-	--	"David-Kunz/markid",
-	--},
 	},
 
+    -- Utils
 	"theprimeagen/harpoon",
 	"theprimeagen/refactoring.nvim",
 	"mbbill/undotree",
 	"tpope/vim-fugitive",
 	"nvim-treesitter/nvim-treesitter-context",
 
+    -- Lsp
 	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v1.x',
@@ -77,7 +75,11 @@ lazy.setup({
 			{'L3MON4D3/LuaSnip'},
 			{'rafamadriz/friendly-snippets'},
 		}
-	}
+	},
+
+    -- Debugger
+    'mfussenegger/nvim-dap',
+    "rcarriga/nvim-dap-ui",
 
 
 })
