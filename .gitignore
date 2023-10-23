@@ -1,6 +1,6 @@
-./nvim/lazy-lock.json
-./zsh/plugins/
-./zsh/.zcomp*
+lazy-lock.json
+zsh/plugins/
+zsh/.zcomp*
 
 # -*- mode: gitignore; -*-
 *~
