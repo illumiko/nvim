@@ -14,7 +14,7 @@ end
 
 
 require("NeoSolarized").setup {
-  style = "dark", -- "dark" or "light"
-  transparent = true,
+  style = "light", -- "dark" or "light"
+  transparent = false,
 }
 ColorMyPencils('melange')
