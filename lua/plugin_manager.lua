@@ -38,6 +38,8 @@ lazy.setup({
     -- Colorscheme
 	{ 'rose-pine/neovim', name = 'rose-pine'},
     { 'Tsuzat/NeoSolarized.nvim' },
+    { "neanias/everforest-nvim", version = false, lazy = false, priority = 1000 },
+    { "savq/melange-nvim" },
 
     -- Treesitter
 	{

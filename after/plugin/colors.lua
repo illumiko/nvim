@@ -1,4 +1,8 @@
-local none = {"Normal","NormalFloat","WinSeparator"}
+local none = {
+    -- "Normal",
+    -- "NormalFloat",
+    "WinSeparator"
+}
 function ColorMyPencils(color)
 	color = color or "NeoSolarized"
 	vim.cmd.colorscheme(color)
@@ -13,4 +17,4 @@ require("NeoSolarized").setup {
   style = "dark", -- "dark" or "light"
   transparent = true,
 }
-ColorMyPencils('NeoSolarized')
+ColorMyPencils('melange')
