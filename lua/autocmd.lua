@@ -1,0 +1,17 @@
+-- vim.cmd([[
+-- function! GoFmt()
+--   let saved_view = winsaveview()
+--   silent %!gofmt
+--   if v:shell_error > 0
+--     cexpr getline(1, '$')->map({ idx, val -> val->substitute('<standard input>', expand('%'), '') })
+--     silent undo
+--     cwindow
+--   endif
+--   call winrestview(saved_view)
+-- endfunction
+
+-- command! GoFmt call GoFmt()
+-- augroup go_autocmd
+--   autocmd BufWritePost *.go GoFmt
+-- augroup END
+-- ]])

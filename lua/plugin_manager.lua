@@ -84,5 +84,8 @@ lazy.setup({
     'mfussenegger/nvim-dap',
     "rcarriga/nvim-dap-ui",
 
+    -- Formatter
+    "mhartington/formatter.nvim"
+
 
 })
