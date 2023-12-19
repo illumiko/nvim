@@ -32,7 +32,7 @@ lazy.setup({
     -- Telescope
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
-		dependencies = { 'nvim-lua/plenary.nvim' } 
+		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
 
     -- Colorscheme
@@ -47,6 +47,9 @@ lazy.setup({
 		events = { "BufEnter" },
 		build = ":TSUpdate",
 	},
+
+    -- Discord Rich Presence
+    {"andweeb/presence.nvim", config=true},
 
     -- Utils
 	"theprimeagen/harpoon",
