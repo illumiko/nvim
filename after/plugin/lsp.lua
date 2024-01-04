@@ -19,7 +19,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<A-j>'] = cmp.mapping.select_next_item(cmp_select),
   ['<A-l>'] = cmp.mapping.confirm({ select = true }),
   ["<A-Space>"] = cmp.mapping.complete(),
-  ['<CR>'] = cmp.mapping.confirm({ select = false }),
+  ['<CR>'] = cmp.mapping.confirm({ select = true }),
 })
 
 

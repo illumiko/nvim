@@ -53,11 +53,14 @@ lazy.setup({
 
     -- Utils
 	"theprimeagen/harpoon",
-	"theprimeagen/refactoring.nvim",
+	-- "theprimeagen/refactoring.nvim",
 	"mbbill/undotree",
 	"tpope/vim-fugitive",
 	"nvim-treesitter/nvim-treesitter-context",
     "tpope/vim-commentary",
+
+    --notes
+    {"nvim-neorg/neorg", build=":Neorg sync-parsers"},
 
     -- Lsp
 	{
