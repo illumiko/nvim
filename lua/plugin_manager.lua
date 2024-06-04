@@ -29,69 +29,69 @@ end
 
 -- Have packer use a popup window
 lazy.setup({
-    -- Telescope
+	-- Telescope
 	{
-		'nvim-telescope/telescope.nvim', tag = '0.1.2',
-		dependencies = { 'nvim-lua/plenary.nvim' }
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.2",
+		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
-    -- Colorscheme
-	{ 'rose-pine/neovim', name = 'rose-pine'},
-    { 'Tsuzat/NeoSolarized.nvim' },
-    { "neanias/everforest-nvim", version = false, lazy = false, priority = 1000 },
-    { "savq/melange-nvim" },
+	-- Colorscheme
+	{ "rose-pine/neovim", name = "rose-pine" },
+	{ "Tsuzat/NeoSolarized.nvim" },
+	{ "neanias/everforest-nvim", version = false, lazy = false, priority = 1000 },
+	{ "savq/melange-nvim" },
 
-    -- Treesitter
+	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
 		events = { "BufEnter" },
 		build = ":TSUpdate",
 	},
 
-    -- Discord Rich Presence
-    {"andweeb/presence.nvim", config=true},
+	-- Discord Rich Presence
+	{ "andweeb/presence.nvim", config = true },
 
-    -- Utils
+	-- Utils
 	"theprimeagen/harpoon",
 	-- "theprimeagen/refactoring.nvim",
 	"mbbill/undotree",
 	"tpope/vim-fugitive",
 	"nvim-treesitter/nvim-treesitter-context",
-    "tpope/vim-commentary",
+	"tpope/vim-commentary",
 
-    --notes
-    {"nvim-neorg/neorg", build=":Neorg sync-parsers"},
+	--notes
+	{ "vhyrro/luarocks.nvim", priority = 1000, config = true },
+	{ "nvim-neorg/neorg", dependencies = { "luarocks.nvim" } },
 
-    -- Lsp
+	-- Lsp
 	{
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v1.x',
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v1.x",
 		dependencies = {
 			-- LSP Support
-			{'neovim/nvim-lspconfig'},
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
 
 			-- Autocompletion
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-buffer'},
-			{'hrsh7th/cmp-path'},
-			{'saadparwaiz1/cmp_luasnip'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'hrsh7th/cmp-nvim-lua'},
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lua" },
 
 			-- Snippets
-			{'L3MON4D3/LuaSnip'},
-			{'rafamadriz/friendly-snippets'},
-		}
+			{ "L3MON4D3/LuaSnip" },
+			{ "rafamadriz/friendly-snippets" },
+		},
 	},
 
-    -- Debugger
-    'mfussenegger/nvim-dap',
-    "rcarriga/nvim-dap-ui",
+	-- Debugger
+	"mfussenegger/nvim-dap",
+	"rcarriga/nvim-dap-ui",
 
-    -- Formatter
-    "mhartington/formatter.nvim"
-
-
+	-- Formatter
+	"mhartington/formatter.nvim",
 })

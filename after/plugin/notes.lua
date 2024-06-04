@@ -17,7 +17,6 @@ require("neorg").setup {
                 neorg_leader = "<Leader>o",
             },
         },
-        ["core.ui.calendar"] = {},
         ["core.journal"] = {
             config = { -- Note that this table is optional and doesn't need to be provided
                 -- Configuration here
