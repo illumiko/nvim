@@ -17,4 +17,6 @@ require("NeoSolarized").setup {
   style = "light", -- "dark" or "light"
   transparent = false,
 }
-ColorMyPencils('melange')
+
+-- ColorMyPencils('kanagawa')
+vim.cmd("colorscheme kanagawa")

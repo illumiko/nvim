@@ -20,7 +20,7 @@ require("neorg").setup {
         ["core.journal"] = {
             config = { -- Note that this table is optional and doesn't need to be provided
                 -- Configuration here
-                workspace = "default",
+                workspace = "my_ws",
                 jornal_folder = "./gtd/journal",
                 strategy = "flat",
             },
@@ -34,10 +34,10 @@ require("neorg").setup {
         ["core.dirman"] = {
             config = {
                 workspaces = {
-                    default = "/home/illumiko/Documents/norg/",
+                    my_ws = "/home/illumiko/Documents/norg/",
                 },
-                autochdir = false,
                 index = "index.norg",
+                default_workspace = "my_ws",
                 open_last_workspace = false,
             },
         }

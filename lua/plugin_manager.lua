@@ -35,10 +35,11 @@ lazy.setup({
 		tag = "0.1.2",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
-
+    {"folke/which-key.nvim",},
 	-- Colorscheme
 	{ "rose-pine/neovim", name = "rose-pine" },
 	{ "Tsuzat/NeoSolarized.nvim" },
+    {"rebelot/kanagawa.nvim"},
 	{ "neanias/everforest-nvim", version = false, lazy = false, priority = 1000 },
 	{ "savq/melange-nvim" },
 
@@ -59,6 +60,7 @@ lazy.setup({
 	"tpope/vim-fugitive",
 	"nvim-treesitter/nvim-treesitter-context",
 	"tpope/vim-commentary",
+    "max397574/colortils.nvim",
 
 	--notes
 	{ "vhyrro/luarocks.nvim", priority = 1000, config = true },
