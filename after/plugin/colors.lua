@@ -17,6 +17,14 @@ require("NeoSolarized").setup {
   style = "light", -- "dark" or "light"
   transparent = false,
 }
+require("everforest").setup {
+    background = "medium",
+    transparent_background_level = 2,
+    dim_inactive_windows = true,
+
+
+
+}
 
 -- ColorMyPencils('kanagawa')
-vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme everforest")
