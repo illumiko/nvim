@@ -67,10 +67,6 @@ lazy.setup({
 	{ "nvim-neorg/neorg", dependencies = { "luarocks.nvim" } },
 
 	-- Lsp
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v1.x",
-		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
 			{ "williamboman/mason.nvim" },
@@ -87,8 +83,6 @@ lazy.setup({
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
-		},
-	},
 
 	-- Debugger
 	"mfussenegger/nvim-dap",
