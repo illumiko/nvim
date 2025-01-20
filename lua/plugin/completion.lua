@@ -11,6 +11,7 @@ local config = function()
 		return
 	end
 
+
 	local has_words_before = function()
 		unpack = unpack or table.unpack
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -23,6 +24,7 @@ local config = function()
 				require("luasnip").lsp_expand(args.body)
 			end,
 		},
+        
 
 		formatting = { -- {{{ the good kind
 			fields = { "kind", "abbr" },
@@ -45,12 +47,12 @@ local config = function()
 		-- },
 
 		mapping = {
-			["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-			["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+			["<A-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+			["<A-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+			["<A-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<A-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 
-			["<C-j>"] = cmp.mapping(function(fallback)
+			["<A-j>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
 				elseif has_words_before() then
@@ -60,7 +62,7 @@ local config = function()
 				end
 			end, { "i", "s" }),
 
-			["<C-k>"] = cmp.mapping(function(fallback)
+			["<A-k>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
 				else
@@ -68,7 +70,7 @@ local config = function()
 				end
 			end, { "i", "s" }),
 
-			["<C-l>"] = cmp.mapping.confirm({
+			["<A-l>"] = cmp.mapping.confirm({
 				behavior = cmp.ConfirmBehavior.Replace,
 				select = true,
 			}),
@@ -78,7 +80,7 @@ local config = function()
 				select = true,
 			}),
 
-			["<C-e>"] = cmp.mapping({
+			["<A-e>"] = cmp.mapping({
 				i = cmp.mapping.abort(),
 				c = cmp.mapping.close(),
 			}),
@@ -100,8 +102,8 @@ local config = function()
 
 		confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
 
-		window = { documentation = { border = "single" }, completion = { side_padding = 2, border = "single" } },
-		-- preselect = cmp.PreselectMode.None,
+		-- window = { documentation = { border = "single" }, completion = { side_padding = 2, border = "single" } },
+		preselect = cmp.PreselectMode.None,
 	})
 
 	-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

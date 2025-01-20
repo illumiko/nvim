@@ -46,14 +46,14 @@ return {
 		end,
 	},
 
-	{
-		"mvllow/modes.nvim",
-		config = function()
-			require("modes").setup({
-				line_opacity = 0.30,
-			})
-		end,
-	},
+	-- {
+	-- 	"mvllow/modes.nvim",
+	-- 	config = function()
+	-- 		require("modes").setup({
+	-- 			line_opacity = 0.30,
+	-- 		})
+	-- 	end,
+	-- },
 
 	{ "shortcuts/no-neck-pain.nvim", version = "*" },
 

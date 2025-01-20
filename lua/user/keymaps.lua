@@ -82,14 +82,14 @@ local normal_keybinds = Binds:new("n", {
 	{ "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true } },
 	{ "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true } },
 
-    --window change
+	--window change
 	{ "<c-j>", "<c-w>j", opts("") },
 	{ "<c-k>", "<c-w>k", opts("") },
 	{ "<c-h>", "<c-w>h", opts("") },
 	{ "<c-l>", "<c-w>l", opts("") },
 
-    --jk remap
-    {"jk", "<ESC>", opts("")}
+	--jk remap
+	{ "jk", "<ESC>", opts("") },
 })
 
 --TogTerm toggle

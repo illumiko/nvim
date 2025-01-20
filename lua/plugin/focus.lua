@@ -3,8 +3,8 @@ local M = {}
 M.lazy = {
 	"nvim-focus/focus.nvim",
 	config = {
-		cursorline = true,
-		cursorcolumn = true,
+		cursorline = false,
+		cursorcolumn = false,
         width = 125,
         height = 30,
 	},
