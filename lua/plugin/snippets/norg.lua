@@ -204,7 +204,7 @@ return {
 		docstring = "sF",
 	}, {
 		t("** Session "),
-		i(1, "1"),
+		i(1),
 		f(function()
 			-- TODO: swap the variable namees
 			local M = {}
@@ -279,7 +279,7 @@ return {
 		docstring = "sP",
 	}, {
 		t("** Session "),
-		i(1, "1 "),
+		i(1),
 		f(function()
 			local M = {}
 			local time = {}

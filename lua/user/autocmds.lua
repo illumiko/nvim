@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
 	group = augroup("autosave"),
-	pattern = { "*.go", "*.lua", "*.norg" },
+	pattern = { "*.go", "*.lua",  },
 	callback = function()
 		vim.cmd.write()
 	end,
