@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, { -- {{{
 	pattern = { "*.norg" },
 	group = g,
 	callback = function()
-		nmap("<M-2>", ":e ~/Documents/norg/main/inbox.norg<CR>", opts)
+		nmap("<M-2>", ":e ~/Documents/norg/inbox.norg<CR>", opts)
 		nmap("<M-3>", function()
 			local path, date = "~/Documents/norg/journal/", os.date("%Y-%m-%d")
 			local prefix, suffix = ":e ", "<CR>"
