@@ -95,7 +95,7 @@ vim.cmd([[
     hi link pyStatement Statement
     hi link pyKeyword Keyword
     hi! link Conceal Operator
-    setlocal conceallevel=2
+    "setlocal conceallevel=2
 ]])
 
 -- }}}

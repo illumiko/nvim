@@ -11,7 +11,7 @@ config.kanagawa = function()
 		variablebuiltinStyle = {},
 		specialReturn = true, -- special highlight for the return keyword
 		specialException = true, -- special highlight for exception handling keywords
-		transparent = true, -- do not set background color
+		transparent = false, -- do not set background color
 		dimInactive = true, -- dim inactive window `:h hl-NormalNC`
 		globalStatus = true,
 	})
@@ -45,10 +45,16 @@ hi TreesitterContext guibg=#222222
 ]=])
 end
 
+config.zenbones = function ()
+    
+end
+
 local plugins = {
 	{ "ellisonleao/gruvbox.nvim", lazy = true, config = config.gruvbox },
 	{ "rockyzhang24/arctic.nvim", branch = "v2" },
 	{ "rebelot/kanagawa.nvim", lazy = true, config = config.kanagawa }, 
+    {"zenbones-theme/zenbones.nvim"},
+    {"kdheepak/monochrome.nvim"},
 }
 
 return plugins

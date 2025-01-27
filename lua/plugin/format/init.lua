@@ -31,6 +31,9 @@ local config = function()
 			go = {
 				require("plugin.format.filetype_conf.go").goimports,
 			},
+            python = {
+                require("plugin.format.filetype_conf.python").black
+            }
 			-- vimwiki = {
 			-- 	require("plugin.format.filetype_conf.markdown").markdownlint,
 			-- },
