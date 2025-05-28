@@ -1,4 +1,2 @@
-require("plugin_manager")
-require("remap")
-require("set")
-require("autocmd")
+require("manager")
+require("user")
