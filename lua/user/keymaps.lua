@@ -56,7 +56,6 @@ local normal_keybinds = Binds:new("n", {
 	{ [[yi)]], [["+yi)]], opts("") },
 
 	--Norg
-	{ "<M-1>", ":e ~/Documents/norg/main/index.norg<CR>", opts("") },
 
 	--Format
 	{ "<leader>F", ":FormatWrite<CR>", opts("Format") },

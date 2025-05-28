@@ -7,7 +7,7 @@ config.lspconfig = function()
 	if not status_ok then
 		return
 	end
-	require("lsp-inlayhints").setup()
+	-- require("lsp-inlayhints").setup()
 	require("plugin.lsp.handlers").setup()
 	require("plugin.lsp.lspInstaller")
 end
@@ -65,7 +65,7 @@ M.lazy = {
 	{ "neovim/nvim-lspconfig", config = config.lspconfig },
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
-	"lvimuser/lsp-inlayhints.nvim",
+	-- "lvimuser/lsp-inlayhints.nvim",
 	"RRethy/vim-illuminate",
 	-- { "ray-x/lsp_signature.nvim", config = config.lsp_signature },
 	{

@@ -73,13 +73,13 @@ local config = function()
 end
 
 M.lazy = {
-	"utilyre/barbecue.nvim",
-	-- name = "barbecue",
-	version = "*",
-	dependencies = {
-		"SmiteshP/nvim-navic",
-	},
-	config = true,
+	-- "utilyre/barbecue.nvim",
+	-- -- name = "barbecue",
+	-- version = "*",
+	-- dependencies = {
+	-- 	"SmiteshP/nvim-navic",
+	-- },
+	-- config = true,
 }
 
 return M.lazy

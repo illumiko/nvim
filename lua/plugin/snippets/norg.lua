@@ -6,38 +6,38 @@ return {
 	s({ trig = "([^%w])h4", regTrig = true, wordTrig = false, snippetType = "autosnippet" }, fmt([[**** {}]], i(0))),
 	s({ trig = "([^%w])h5", regTrig = true, wordTrig = false, snippetType = "autosnippet" }, fmt([[***** {}]], i(0))),
 	s({ trig = "tk", regTrig = true, wordTrig = false, snippetType = "autosnippet" }, fmt([[  ( ) {}]], i(0))),
-	s(
-		{ trig = "daily", wordTrig = true, regTrig = false, snippetType = "snippet" },
-		fmta(
-			[=[** Daily
-   - ( ) Eye drop
-   -- ( ) 1
-   -- ( ) 2
-   -- ( ) 3
-   -- ( ) 4
+	-- s(
+	-- 	{ trig = "daily", wordTrig = true, regTrig = false, snippetType = "snippet" },
+	-- 	fmta(
+	-- 		[=[** Daily
+ --   - ( ) Eye drop
+ --   -- ( ) 1
+ --   -- ( ) 2
+ --   -- ( ) 3
+ --   -- ( ) 4
+	--
+ --   - ( ) Namaj
+ --   -- ( ) Fazr
+ --   -- ( ) Jumma
+ --   -- ( ) Asr
+ --   -- ( ) Magrib
+ --   -- ( ) Asha <> ]=],
+	-- 		{ i(0) }
+	-- 	)
+	-- ),
 
-   - ( ) Namaj
-   -- ( ) Fazr
-   -- ( ) Jumma
-   -- ( ) Asr
-   -- ( ) Magrib
-   -- ( ) Asha <> ]=],
-			{ i(0) }
-		)
-	),
-
-	s(
-		{ trig = "sc ", wordTrig = true, dscr = "boiler plate for schedule timers", snippetType = autosnippet },
-		fmt([[- {1}: {2}      *<{3}-{4}-{5} {6}>*]], {
-			i(1, "school|udvash"),
-			i(2, "Subject"),
-			i(3, "year"),
-			i(4, "month"),
-			i(5, "day"),
-			i(6, "time(4:00 pm)"),
-		}),
-		{ condition = line_begin }
-	),
+	-- s(
+	-- 	{ trig = "sc ", wordTrig = true, dscr = "boiler plate for schedule timers", snippetType = autosnippet },
+	-- 	fmt([[- {1}: {2}      *<{3}-{4}-{5} {6}>*]], {
+	-- 		i(1, "school|udvash"),
+	-- 		i(2, "Subject"),
+	-- 		i(3, "year"),
+	-- 		i(4, "month"),
+	-- 		i(5, "day"),
+	-- 		i(6, "time(4:00 pm)"),
+	-- 	}),
+	-- 	{ condition = line_begin }
+	-- ),
 
 	s({
 		trig = "haj",
@@ -51,8 +51,8 @@ return {
 			routine.current_day = os.date("%A")
 			routine.main = function()
 				local template_last_part = {
-					[1] = "*TO BE AT A PLACE NO ONE ELSE IS; YOU HAVE DO THINGS NO ONE ELSE WANTS*",
-					[2] = "*Refresh strategy: 30m nap + shower + coffee*",
+					[1] = "*Do it for yourself. And only yourself.*",
+					[2] = "*Dont forget the people that helped you when you were down*",
 					[3] = "* Agenda",
 					[4] = "* Pomodoro",
 				}
@@ -72,62 +72,62 @@ return {
 		end),
 	}, { condition = line_begin }),
 
-	s({ trig = "routine", dscr = "routine_generator", docstring = "routine" }, {
-		f(function()
-			local routine = { -- {{{
-				["sunday"] = {
-					"Hmath",
-					"Bio",
-					"Physics(cr)",
-				},
-				["monday"] = {
-					"Bgs",
-					"Ime",
-					"Bangla (cr)",
-					"Math @6/@6:30",
-				},
-				["tuesday"] = {
-					"Revision",
-					"Chemistry (cr)",
-				},
-				["wednesday"] = {
-					"Do whatever you want",
-					"Bangla (cr)",
-					"Math @6/@6:30",
-				},
-
-				["thursday"] = {
-					"Chemistry/Physics (cr)",
-					"Bangla",
-				},
-				["friday"] = {
-					"Physics",
-					"GMath",
-					"Hujur @10:30",
-				},
-				["saturday"] = {
-					"Revision",
-					"Bangla(cr)",
-					"Math @6/@6:30",
-					"Hujur @3:30",
-				},
-			} -- }}}
-			-- %A returns full weekday string
-			routine.current_day = os.date("%A")
-			routine.current_day_tasks = routine[string.lower(routine.current_day)]
-
-			routine.main = function()
-				local gen_routine = {
-					[1] = "* " .. routine.current_day .. "",
-				}
-				for z, v in ipairs(routine.current_day_tasks) do
-					gen_routine[1 + z] = "  - " .. v
-				end
-				return gen_routine
-			end
-			return routine.main()
-		end),
-	}, { conditon = line_begin }),
+	-- s({ trig = "routine", dscr = "routine_generator", docstring = "routine" }, {
+	-- 	f(function()
+	-- 		local routine = { -- {{{
+	-- 			["sunday"] = {
+	-- 				"Hmath",
+	-- 				"Bio",
+	-- 				"Physics(cr)",
+	-- 			},
+	-- 			["monday"] = {
+	-- 				"Bgs",
+	-- 				"Ime",
+	-- 				"Bangla (cr)",
+	-- 				"Math @6/@6:30",
+	-- 			},
+	-- 			["tuesday"] = {
+	-- 				"Revision",
+	-- 				"Chemistry (cr)",
+	-- 			},
+	-- 			["wednesday"] = {
+	-- 				"Do whatever you want",
+	-- 				"Bangla (cr)",
+	-- 				"Math @6/@6:30",
+	-- 			},
+	--
+	-- 			["thursday"] = {
+	-- 				"Chemistry/Physics (cr)",
+	-- 				"Bangla",
+	-- 			},
+	-- 			["friday"] = {
+	-- 				"Physics",
+	-- 				"GMath",
+	-- 				"Hujur @10:30",
+	-- 			},
+	-- 			["saturday"] = {
+	-- 				"Revision",
+	-- 				"Bangla(cr)",
+	-- 				"Math @6/@6:30",
+	-- 				"Hujur @3:30",
+	-- 			},
+	-- 		} -- }}}
+	-- 		-- %A returns full weekday string
+	-- 		routine.current_day = os.date("%A")
+	-- 		routine.current_day_tasks = routine[string.lower(routine.current_day)]
+	--
+	-- 		routine.main = function()
+	-- 			local gen_routine = {
+	-- 				[1] = "* " .. routine.current_day .. "",
+	-- 			}
+	-- 			for z, v in ipairs(routine.current_day_tasks) do
+	-- 				gen_routine[1 + z] = "  - " .. v
+	-- 			end
+	-- 			return gen_routine
+	-- 		end
+	-- 		return routine.main()
+	-- 	end),
+	-- }, { conditon = line_begin }),
 
 	s(
 		{ trig = "slog", docstring = "slog", snippetType = "snippet", dscr = "time logging" },
