@@ -66,6 +66,12 @@ keys = {
 		silent = true,
 	},
 	{
+		"<leader>bb",
+		":Telescope buffers theme=ivy<CR>",
+		desc = "Find Files",
+		silent = true,
+	},
+	{
 		"<leader>ff",
 		":Telescope find_files theme=ivy<CR>",
 		desc = "Find Files",
@@ -78,7 +84,7 @@ keys = {
 		silent = true,
 	},
 	{
-		"<leader>fo",
+		"<leader>fr",
 		":Telescope oldfiles theme=ivy<CR>",
 		desc = "Old Files",
 		silent = true,

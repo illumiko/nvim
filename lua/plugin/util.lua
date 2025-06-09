@@ -1,14 +1,21 @@
 return {
 	"winston0410/cmd-parser.nvim",
-	"anuvyklack/keymap-amend.nvim",
+	-- "anuvyklack/keymap-amend.nvim",
 	"nvim-lua/plenary.nvim",
 	"kyazdani42/nvim-web-devicons",
 	"MunifTanjim/nui.nvim",
 	"rktjmp/lush.nvim",
+
+    {
+        "kylechui/nvim-surround",
+        config = function()
+            require("nvim-surround").setup()
+        end
+    },
 	"nvim-lua/popup.nvim",
 	"godlygeek/tabular",
-	"wellle/targets.vim", -- better surround motions
-	"matze/vim-move",
+	-- "wellle/targets.vim", -- better surround motions
+	-- "matze/vim-move",
 	"lewis6991/impatient.nvim",
 
 	{
@@ -19,13 +26,13 @@ return {
 		end,
 	},
 
-	{
-		"echasnovski/mini.nvim",
-		version = false,
-		config = function()
-			require("mini.surround").setup()
-		end,
-	},
+	-- {
+	-- 	"echasnovski/mini.nvim",
+	-- 	version = false,
+	-- 	config = function()
+	-- 		require("mini.surround").setup()
+	-- 	end,
+	-- },
 
 	{
 		-- "echasnovski/mini.animate",

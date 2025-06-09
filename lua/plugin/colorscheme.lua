@@ -1,5 +1,4 @@
 local config = {}
-
 config.kanagawa = function()
 	require("kanagawa").setup({
 		undercurl = true, -- enable undercurls

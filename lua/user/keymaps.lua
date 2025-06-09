@@ -18,13 +18,18 @@ function Binds:new(map_type, maps)
 
 	return self:bind()
 end
-
 function Binds:bind()
 	for _, value in ipairs(self.maps) do
 		vim.keymap.set(self.map_type, value[1], value[2], value[3])
 	end
 end
-
+-- local insert_keybinds = Binds:new("i", {
+-- 	{"<A-j>", "<Down>", opts("")},
+-- 	{"<A-k>", "<Up>", opts("")},
+--
+-- })
+vim.keymap.set('i', '<A-j>', '<Down>', { noremap = true, silent = true })
+vim.keymap.set('i', '<A-k>', '<Up>', { noremap = true, silent = true })
 local visual_keybinds = Binds:new("v", {
 	--better copy
 	{ "Y", '"+y$', opts("") },
@@ -61,7 +66,7 @@ local normal_keybinds = Binds:new("n", {
 	{ "<leader>F", ":FormatWrite<CR>", opts("Format") },
 
 	--Clear hlsearch
-	{ "<Leader>H", ":set hlsearch!<CR>", opts("clear hls") },
+	{ "<Leader>h h", ":set hlsearch!<CR>", opts("clear hls") },
 
 	--Swap window
 	{ "<C-x>", "<C-w>x", opts("") },
@@ -89,6 +94,8 @@ local normal_keybinds = Binds:new("n", {
 
 	--jk remap
 	{ "jk", "<ESC>", opts("") },
+
+
 })
 
 --TogTerm toggle

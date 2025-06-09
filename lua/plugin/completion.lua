@@ -52,7 +52,7 @@ local config = function()
 			["<A-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<A-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 
-			["<A-j>"] = cmp.mapping(function(fallback)
+			["<Down>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
 				elseif has_words_before() then
@@ -62,7 +62,7 @@ local config = function()
 				end
 			end, { "i", "s" }),
 
-			["<A-k>"] = cmp.mapping(function(fallback)
+			["<Up>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
 				else
