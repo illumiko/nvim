@@ -16,6 +16,17 @@ local config = function()
 					["q"] = actions.close,
 				},
 			},
+            vimgrep_arguments = {
+                "rg",
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+                "--no-ignore",
+                "--hidden",
+            },
 		},
 		autotag = { enable = true },
 		rainbow = {
@@ -25,11 +36,16 @@ local config = function()
 			},
 		},
 		pickers = { -- {{{
+            help_tags = {
+                theme = "ivy"
+            },
 			find_files = {
 				theme = "ivy",
+                no_ignore = true,
+                hidden = true
 			},
 			buffers = {
-				theme = "dropdown",
+				theme = "ivy",
 			},
 			spell_suggest = {
 				theme = "cursor",
@@ -54,6 +70,11 @@ local config = function()
 	telescope.load_extension("file_browser")
 end
 keys = {
+    {
+        "<leader>fh",
+        "<cmd>lua require('telescope.builtin').help_tags()<CR>",
+        desc="help menu picker"
+    },
 	{
 		"<leader>fp",
 		"<cmd>lua require('telescope.builtin').find_files({cwd='~/Documents/Projects/'})<CR>",
@@ -119,3 +140,4 @@ M.lazy = {
 	},
 }
 return M.lazy
+

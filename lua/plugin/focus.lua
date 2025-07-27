@@ -10,4 +10,4 @@ M.lazy = {
 	},
 }
 
-return M.lazy
+return {}

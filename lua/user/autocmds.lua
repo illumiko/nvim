@@ -90,6 +90,7 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	callback = function()
 		vim.cmd("set formatoptions-=cro")
 		vim.cmd("set signcolumn=yes")
+        -- vim.cmd("set foldlevelstart=0")
 	end,
 })
 
@@ -100,3 +101,4 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
 		vim.cmd.write()
 	end,
 })
+

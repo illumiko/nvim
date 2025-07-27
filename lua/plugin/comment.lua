@@ -69,6 +69,6 @@ M.config = {
 }
 M.lazy = {
 	"numToStr/Comment.nvim",
-    config = M.config
+    opts = M.config
 }
 return M.lazy

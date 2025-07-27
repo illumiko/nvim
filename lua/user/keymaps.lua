@@ -66,7 +66,7 @@ local normal_keybinds = Binds:new("n", {
 	{ "<leader>F", ":FormatWrite<CR>", opts("Format") },
 
 	--Clear hlsearch
-	{ "<Leader>h h", ":set hlsearch!<CR>", opts("clear hls") },
+	{ "<Leader>hh", ":set hlsearch!<CR>", opts("clear hls") },
 
 	--Swap window
 	{ "<C-x>", "<C-w>x", opts("") },
@@ -76,8 +76,8 @@ local normal_keybinds = Binds:new("n", {
 	{ "<leader>tn", ":tabnext<CR>", opts("") },
 
 	--Buffer next/previous
-	{ "<S-l>", ":bnext<CR>", opts("") },
-	{ "<S-h>", ":bprevious<CR>", opts("") },
+	-- { "<S-l>", ":bnext<CR>", opts("") },
+	-- { "<S-h>", ":bprevious<CR>", opts("") },
 
 	--Switch to original buffer from a jump
 	{ "<bs>", ":edit #<cr>", opts("") },

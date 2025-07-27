@@ -43,12 +43,6 @@ local config = function()
 			enable = false,
 			-- colors = { "#619e9d", "#9E6162", "#81A35C", "#7E5CA3", "#9E9261", "#616D9E", "#97687B", "#689784", "#999C63", "#66639C" }
 		},
-		rainbow = {
-			enable = false,
-			extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-			max_file_lines = 10000, -- Do not enable for files with more than n lines, int
-			-- termcolors = {} -- table of colour name strings
-		},
 	})
 end
 M.lazy = {
@@ -59,8 +53,8 @@ M.lazy = {
 	dependencies = {
 		"nvim-treesitter/playground",
 		"windwp/nvim-ts-autotag",
-		"p00f/nvim-ts-rainbow",
 		"David-Kunz/markid",
 	},
+    {"nvim-treesitter/nvim-treesitter-context", config=true}
 }
 return M.lazy

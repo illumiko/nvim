@@ -23,7 +23,10 @@ local config = function()
 				end,
 			},
 			json = {
-				require("plugin.format.filetype_conf.json"),
+				require("plugin.format.filetype_conf.json").prettier,
+			},
+			jsonc = {
+				require("plugin.format.filetype_conf.json").prettier,
 			},
 			typescript = {
 				require("plugin.format.filetype_conf.typescript").prettiereslint,

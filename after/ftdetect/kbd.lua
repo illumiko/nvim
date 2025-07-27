@@ -1,10 +1,9 @@
-local g = vim.api.nvim_create_augroup("cf", { clear = true })
+local g = vim.api.nvim_create_augroup("kbd", { clear = true })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	group = g,
-	pattern = "*.conf",
+	pattern = "*.kbd",
 	callback = function()
-		vim.cmd("set filetype=i3config")
+		vim.cmd("set filetype=lisp")
         vim.cmd("hi i3ConfigError guibg=none")
 	end,
 })
-

@@ -75,18 +75,21 @@ local function lsp_keymaps(bufnr)
 	local nmap = require("utils.maps").nmap
 	local opts = require("utils.maps").opts
 
-	nmap("rn", vim.lsp.buf.rename, opts("Rename"))
-	nmap("gx", vim.lsp.buf.code_action, opts("Code Action"))
-	nmap("gd", vim.lsp.buf.definition, opts("Goto Def"))
-	nmap("gt", vim.lsp.buf.type_definition, opts("Goto Def"))
-	nmap("gi", vim.lsp.buf.implementation, opts("implementation"))
-	nmap("gr", vim.lsp.buf.references, opts("References"))
-	nmap("go", vim.diagnostic.open_float, opts("Diagnostic View"))
-	nmap("gj", vim.diagnostic.goto_next, opts("J Diagnostic"))
-	nmap("gk", vim.diagnostic.goto_prev, opts("K Diagnostic"))
+	nmap(" rn", vim.lsp.buf.rename, opts("Rename"))
+	nmap(" gx", vim.lsp.buf.code_action, opts("Code Action"))
+	nmap(" gd", vim.lsp.buf.definition, opts("Goto Def"))
+	nmap(" gt", vim.lsp.buf.type_definition, opts("Goto Def"))
+	nmap(" gi", vim.lsp.buf.implementation, opts("implementation"))
+	nmap(" gr", vim.lsp.buf.references, opts("References"))
+	nmap(" go", vim.diagnostic.open_float, opts("Diagnostic View"))
+	nmap(" gj", vim.diagnostic.goto_next, opts("J Diagnostic"))
+	nmap(" gk", vim.diagnostic.goto_prev, opts("K Diagnostic"))
 	nmap("K", function()
-			-- choose one of coc.nvim and nvim lsp
-			vim.lsp.buf.hover()
+        local winid = require('ufo').peekFoldedLinesUnderCursor()
+        if not winid then
+            -- choose one of coc.nvim and nvim lsp
+            vim.lsp.buf.hover()
+        end
 	end, {desc = "Hover", noremap = true, silent = true })
 end
 
@@ -94,6 +97,10 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 	end
+    -- client.resolved_capabilities.textDocument.foldingRange = {
+    --     dynamicRegistration = false,
+    --     lineFoldingOnly = true
+    -- }
 	nav(client, bufnr)
 	lsp_highlight_document(client)
 	inlay_hints(client, bufnr)

@@ -15,6 +15,6 @@ M.config = {
 }
 M.lazy = {
 	"folke/which-key.nvim",
-    config = M.config
+    opts = M.config
 }
 return M.lazy

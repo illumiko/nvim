@@ -2,8 +2,8 @@ local u = require("utils.get_hl")
 local transparent = function() -- {{{
 	local transparent = {
 		-- "VertSplit",
-		-- "FloatBorder",
-		-- "NormalFloat",
+		"FloatBorder",
+		"NormalFloat",
 		"Folded",
 		"WinSeparator",
 		"LspInlayHint",
@@ -12,13 +12,13 @@ local transparent = function() -- {{{
 		"TelescopeBorder",
 		"TelescopeResultsBorder",
 		"TelescopePreviewBorder",
-		"TelescopePromptBorder",
+		-- "TelescopePromptBorder",
 		"TelescopeTitle",
 		"TelescopeResultsTitle",
 		"TelescopePreviewTitle",
 		"TelescopePromptTitle",
 		"TelescopeNormal",
-		-- "NormalNC",
+		"NormalNC",
 	}
 
 	for _, value in pairs(transparent) do
@@ -38,11 +38,12 @@ local ts_rainbow = { -- {{{
 
 transparent() -- setting hi's to none
 u.set_hl_fg("Folded", "Comment") -- Change folded guifg
-u.set_hl_bg("ScrollbarCursor", "Visual") -- Change scroll bar guibg
+-- u.set_hl_bg("ScrollbarCursor", "Visual") -- Change scroll bar guibg
 vim.cmd([[
 hi SpellBad guifg=none guisp=Red
 hi Todo guibg=none
 hi MDCodeBlock guibg=#232323
+hi TelescopeSelection guibg=#000000
 ]])
 --hi NormalFloat guibg=#1C1917 guifg=#c3c3c3
 --hi MDCodeBlock guibg=#111111
@@ -96,6 +97,7 @@ vim.cmd([[
     hi link pyKeyword Keyword
     hi! link Conceal Operator
     "setlocal conceallevel=2
+    " hi NormalNC guibg=#0b313b
 ]])
 
 -- }}}

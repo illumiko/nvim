@@ -1,6 +1,6 @@
 local M = {}
 
-config = function()
+local config = function()
     require('wlsample.evil_line')
 end
 
@@ -8,4 +8,4 @@ M.lazy = {
 	"windwp/windline.nvim",
 	config = config,
 }
-return {}
+return M.lazy

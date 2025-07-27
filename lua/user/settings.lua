@@ -7,7 +7,7 @@ vim.o.hidden = true -- required to keep multiple buffers and open multiple buffe
 vim.o.ignorecase = true -- ignore case in search patterns
 vim.o.pumheight = 15 -- pop up menu height
 vim.o.showmode = true -- we don't need to see things like -- INSERT -- anymore
--- vim.o.showtabline = 2 -- always show tabs
+vim.o.showtabline = 2 -- always show tabs
 vim.o.smartcase = true -- smart case
 vim.o.smartindent = true -- make indenting smarter again
 vim.o.splitbelow = true -- force all horizontal splits to go below current window
@@ -62,8 +62,11 @@ set noshowcmd noruler
 ]])
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 -- vim.o.foldmethod = "marker"
-vim.opt.foldenable=false
+-- vim.opt.foldenable=false
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+
+
+
