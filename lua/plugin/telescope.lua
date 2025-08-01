@@ -16,6 +16,17 @@ local config = function()
 					["q"] = actions.close,
 				},
 			},
+            vimgrep_arguments = {
+                "rg",
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+                "--no-ignore",
+                "--hidden",
+            },
 		},
 		autotag = { enable = true },
 		rainbow = {
@@ -25,11 +36,16 @@ local config = function()
 			},
 		},
 		pickers = { -- {{{
+            help_tags = {
+                theme = "ivy"
+            },
 			find_files = {
 				theme = "ivy",
+                no_ignore = true,
+                hidden = true
 			},
 			buffers = {
-				theme = "dropdown",
+				theme = "ivy",
 			},
 			spell_suggest = {
 				theme = "cursor",
@@ -54,6 +70,11 @@ local config = function()
 	telescope.load_extension("file_browser")
 end
 keys = {
+    {
+        "<leader>fh",
+        "<cmd>lua require('telescope.builtin').help_tags()<CR>",
+        desc="help menu picker"
+    },
 	{
 		"<leader>fp",
 		"<cmd>lua require('telescope.builtin').find_files({cwd='~/Documents/Projects/'})<CR>",
@@ -63,6 +84,12 @@ keys = {
 		"<leader>fd",
 		"<cmd>lua require('telescope.builtin').find_files({cwd='~/dotfiles/'})<CR>",
 		desc = "Config Files",
+		silent = true,
+	},
+	{
+		"<leader>bb",
+		":Telescope buffers theme=ivy<CR>",
+		desc = "Find Files",
 		silent = true,
 	},
 	{
@@ -78,7 +105,7 @@ keys = {
 		silent = true,
 	},
 	{
-		"<leader>fo",
+		"<leader>fr",
 		":Telescope oldfiles theme=ivy<CR>",
 		desc = "Old Files",
 		silent = true,
@@ -113,3 +140,4 @@ M.lazy = {
 	},
 }
 return M.lazy
+

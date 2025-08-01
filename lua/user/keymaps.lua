@@ -90,6 +90,10 @@ local normal_keybinds = Binds:new("n", {
 	--jk remap
 	{ "jk", "<ESC>", opts("") },
 })
+local terminal_keybindings = Binds:new("t", {
+	{ "jk", [[<C-\><C-n>]], opts("") },
+
+})
 
 --TogTerm toggle
 vim.cmd([[ "sets the close key for toggle term

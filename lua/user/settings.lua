@@ -1,12 +1,14 @@
 vim.o.backup = false -- creates a backup file
 -- vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.o.cmdheight = 3 -- more space in the neovim command line for displaying messages
--- vim.opt.colorcolumn = "100" -- fixes indentline for now
+vim.o.winborder = "solid"
+vim.opt.colorcolumn = "100" -- fixes indentline for now
 vim.o.conceallevel = 0 -- so that `` is visible in markdown files
 vim.o.hidden = true -- required to keep multiple buffers and open multiple buffers
 vim.o.ignorecase = true -- ignore case in search patterns
 vim.o.pumheight = 15 -- pop up menu height
 vim.o.showmode = true -- we don't need to see things like -- INSERT -- anymore
+vim.o.signcolumn = "yes"
 -- vim.o.showtabline = 2 -- always show tabs
 vim.o.smartcase = true -- smart case
 vim.o.smartindent = true -- make indenting smarter again

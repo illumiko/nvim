@@ -98,7 +98,7 @@ local config = function()
 			-- { name = 'snippy' }, -- For snippy users.
 		}),
 
-		experimental = { ghost_text = true },
+		experimental = { ghost_text = false },
 
 		confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
 
