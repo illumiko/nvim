@@ -95,6 +95,15 @@ local terminal_keybindings = Binds:new("t", {
 
 })
 
+-- local insert_keybinds = Binds:new("i", {
+--     -- {"<A-m>","<c-x><c-o>",opts("")},
+--     -- {"<A-f>","<c-x><c-f>",opts("")},
+--     -- {"<A-u>","<c-x><c-u>",opts("")},
+--     -- {"<A-j>","<c-n>",opts("")},
+--     -- {"<A-k>","<c-p>",opts("")},
+--
+-- })
+
 --TogTerm toggle
 vim.cmd([[ "sets the close key for toggle term
 " set

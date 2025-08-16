@@ -9,6 +9,7 @@ vim.o.ignorecase = true -- ignore case in search patterns
 vim.o.pumheight = 15 -- pop up menu height
 vim.o.showmode = true -- we don't need to see things like -- INSERT -- anymore
 vim.o.signcolumn = "yes"
+vim.opt.completefunc = "v:lua.require'omnicomp'" -- custom snippet completion defined in lua/snipcomp.lua
 -- vim.o.showtabline = 2 -- always show tabs
 vim.o.smartcase = true -- smart case
 vim.o.smartindent = true -- make indenting smarter again

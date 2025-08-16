@@ -49,11 +49,12 @@ config.zenbones = function ()
 end
 
 local plugins = {
-	{ "ellisonleao/gruvbox.nvim", lazy = true, config = config.gruvbox },
+	{ "ellisonleao/gruvbox.nvim", lazy = false, config = config.gruvbox },
 	{ "rockyzhang24/arctic.nvim", branch = "v2" },
-	{ "rebelot/kanagawa.nvim", lazy = true, config = config.kanagawa }, 
+	{ "rebelot/kanagawa.nvim", lazy = false, config = config.kanagawa }, 
     {"zenbones-theme/zenbones.nvim"},
     {"kdheepak/monochrome.nvim"},
+    {    "rktjmp/lush.nvim",}
 }
 
 return plugins

@@ -2,6 +2,7 @@ local M = {}
 local config = function()
 	local util = require("formatter.util")
 	require("formatter").setup({
+    logging = false, --disables nagging which shows up in your cmd
 		filetype = {
 			lua = {
 				require("plugin.format.filetype_conf.lua").stylua,
