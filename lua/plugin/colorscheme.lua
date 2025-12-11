@@ -50,11 +50,13 @@ end
 
 local plugins = {
 	{ "ellisonleao/gruvbox.nvim", lazy = false, config = config.gruvbox },
-	{ "rockyzhang24/arctic.nvim", branch = "v2" },
+	{ "rockyzhang24/arctic.nvim", branch = "v2" }, --vscode theme pretty good
+    {"olimorris/onedarkpro.nvim", priority=1000},
 	{ "rebelot/kanagawa.nvim", lazy = false, config = config.kanagawa }, 
     {"zenbones-theme/zenbones.nvim"},
     {"kdheepak/monochrome.nvim"},
-    {    "rktjmp/lush.nvim",}
+    {    "rktjmp/lush.nvim",},
+    {'AlexvZyl/nordic.nvim'}
 }
 
 return plugins

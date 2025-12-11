@@ -100,3 +100,15 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
 		vim.cmd.write()
 	end,
 })
+vim.api.nvim_create_autocmd({"CursorHold","CursorHoldI"},{
+    group = augroup("hover_hl"),
+    callback = function() 
+        vim.lsp.buf.document_highlight()
+    end
+})
+vim.api.nvim_create_autocmd({"CursorMoved"},{
+    group = augroup("hover_hl"),
+    callback = function() 
+        vim.lsp.buf.clear_references()
+    end
+})

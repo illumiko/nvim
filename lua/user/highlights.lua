@@ -1,5 +1,5 @@
 local u = require("utils.get_hl")
-local transparent = function() -- {{{
+local transparent = function()
 	local transparent = {
 		-- "VertSplit",
 		-- "FloatBorder",
@@ -24,8 +24,22 @@ local transparent = function() -- {{{
 	for _, value in pairs(transparent) do
 		vim.cmd("hi " .. value .. " guibg=none guifg=none")
 	end
-end -- }}}
+end
 
+local fixbg = function()
+	local transparent = {
+        "WLblue_black",
+        "WLwhite_black",
+        "WLgreen_black",
+        "WLyellow_black",
+        "WLred_black",
+        "WLmagenta_black",
+	}
+
+	for _, value in pairs(transparent) do
+		vim.cmd("hi " .. value .. " guibg=none")
+	end
+end
 local ts_rainbow = { -- {{{
 	"@debug",
 	"@define",
@@ -37,12 +51,14 @@ local ts_rainbow = { -- {{{
 } -- }}}
 
 transparent() -- setting hi's to none
+fixbg()
 u.set_hl_fg("Folded", "Comment") -- Change folded guifg
 u.set_hl_bg("ScrollbarCursor", "Visual") -- Change scroll bar guibg
 vim.cmd([[
 hi SpellBad guifg=none guisp=Red
 hi Todo guibg=none
 hi MDCodeBlock guibg=#232323
+hi LspInlayHint guifg=#555555
 "hi NormalNC guibg=#000000
 ]])
 --hi NormalFloat guibg=#1C1917 guifg=#c3c3c3

@@ -24,8 +24,9 @@ local config = function()
 				require("luasnip").lsp_expand(args.body)
 			end,
 		},
-        completetion= {
-        autocomplete= false,},
+        completion= {
+        autocomplete= false,
+    },
 		formatting = { -- {{{ the good kind
 			fields = { "kind", "abbr" },
 			format = function(entry, vim_item)
@@ -103,7 +104,7 @@ local config = function()
 		confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
 
 		-- window = { documentation = { border = "single" }, completion = { side_padding = 2, border = "single" } },
-		preselect = cmp.PreselectMode.Item,
+		preselect = cmp.PreselectMode.None,
 	})
 
 	-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

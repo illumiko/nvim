@@ -1,8 +1,8 @@
 local imap = require("utils.maps").imap
 local cmap = require("utils.maps").cmap
 
-local opts = function(meta)
-	return { noremap = true, silent = true, desc = "" }
+local opts = function(x)
+	return { noremap = true, silent = true, desc = x }
 end
 
 local ls = require("luasnip")
@@ -40,6 +40,7 @@ local visual_keybinds = Binds:new("v", {
 	{ ">", ">gv", opts("") },
 })
 local normal_keybinds = Binds:new("n", {
+    {"grd",":lua vim.lsp.buf.definition()<cr>",opts("goto def")},
 	{ "<Space>", "<NOP>", opts("") },
 
 	--center after c-d/u

@@ -1,3 +1,3 @@
 require("manager")
 require("user")
-require("omnicomp")
+-- require("omnicomp")
