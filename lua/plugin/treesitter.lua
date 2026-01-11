@@ -1,7 +1,7 @@
 local M = {}
 local config = function()
 	require("nvim-treesitter.configs").setup({
-        ensure_installed = { "c","go", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+        ensure_installed = { "c","python","go", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 		playground = {
 			enable = false,
 			disable = {},
