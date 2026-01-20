@@ -25,7 +25,7 @@ local config = function()
 			end,
 		},
         completion= {
-        autocomplete= false,
+        autocomplete= True,
     },
 		formatting = { -- {{{ the good kind
 			fields = { "kind", "abbr" },
