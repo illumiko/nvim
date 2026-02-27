@@ -56,7 +56,8 @@ local plugins = {
     {"zenbones-theme/zenbones.nvim"},
     {"kdheepak/monochrome.nvim"},
     {    "rktjmp/lush.nvim",},
-    {'AlexvZyl/nordic.nvim'}
+    {'AlexvZyl/nordic.nvim'},
+    {"rose-pine/neovim"}
 }
 
 return plugins
