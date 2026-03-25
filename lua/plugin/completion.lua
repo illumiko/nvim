@@ -1,143 +1,216 @@
-local M = {}
-local config = function()
-	local kind_icons = require("utils.icons").kind
+return {
+	"saghen/blink.cmp",
+	-- optional: provides snippets for the snippet source
+	dependencies = { "rafamadriz/friendly-snippets" },
 
-	for _, k in ipairs(vim.tbl_keys(kind_icons)) do
-		vim.cmd("hi CmpItemKind" .. k .. " gui=reverse")
-	end
+	-- use a release tag to download pre-built binaries
+	version = "1.*",
+	-- AND/OR build from source
+	-- build = 'cargo build --release',
+	-- If you use nix, you can build from source with:
+	-- build = 'nix run .#build-plugin',
 
-	local cmp_status_ok, cmp = pcall(require, "cmp")
-	if not cmp_status_ok then
-		return
-	end
+	---@module 'blink.cmp'
+	---@type blink.cmp.Config
+	opts = {
+		-- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+		-- 'super-tab' for mappings similar to vscode (tab to accept)
+		-- 'enter' for enter to accept
+		-- 'none' for no mappings
+		--
+		-- All presets have the following mappings:
+		-- C-space: Open menu or open docs if already open
+		-- C-n/C-p or Up/Down: Select next/previous item
+		-- C-e: Hide menu
+		-- C-k: Toggle signature help (if signature.enabled = true)
+		--
+		-- See :h blink-cmp-config-keymap for defining your own keymap
+		keymap = {
+			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+			["<C-e>"] = { "hide", "fallback" },
+			["<C-l>"] = { "select_and_accept", "fallback" },
 
+			["<Up>"] = { "select_prev", "fallback" },
+			["<Down>"] = { "select_next", "fallback" },
+			["<A-k>"] = { "select_prev", "fallback_to_mappings" },
+			["<A-j>"] = { "select_next", "fallback_to_mappings" },
 
-	local has_words_before = function()
-		unpack = unpack or table.unpack
-		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-	end
+			["<C-b>"] = { "scroll_documentation_up", "fallback" },
+			["<C-f>"] = { "scroll_documentation_down", "fallback" },
 
-	cmp.setup({
-		snippet = {
-			expand = function(args)
-				require("luasnip").lsp_expand(args.body)
-			end,
+			["<Tab>"] = { "snippet_forward", "fallback" },
+			["<S-Tab>"] = { "snippet_backward", "fallback" },
+
+			["<A-p>"] = { "show_signature", "hide_signature", "fallback" },
 		},
-        completion= {
-        -- autocomplete= false,
-    },
-		formatting = { -- {{{ the good kind
-			fields = { "kind", "abbr" },
-			format = function(entry, vim_item)
-				local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-				local strings = vim.split(kind.kind, "%s", { trimempty = true })
-				kind.kind = "" .. strings[1] .. ""
-				-- kind.menu = "    (" .. strings[2] .. ")"
-
-				return kind
-			end,
-		}, -- }}}
-		-- formatting = {
-		-- 	fields = { "kind", "abbr", "menu" },
-		-- 	format = function(_, item)
-		-- 		item.kind = (" " .. kind_icons[item.kind]) or " "
-		-- 		-- item.menu = source_names[entry.source.name] or " "
-		-- 		return item
-		-- 	end,
-		-- },
-
-		mapping = {
-			["<A-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-			["<A-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-			["<A-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-			["<A-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-
-			["<A-j>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_next_item()
-				elseif has_words_before() then
-					cmp.complete()
-				else
-					fallback()
-				end
-			end, { "i", "s" }),
-
-			["<A-k>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_prev_item()
-				else
-					fallback()
-				end
-			end, { "i", "s" }),
-
-			["<A-l>"] = cmp.mapping.confirm({
-				behavior = cmp.ConfirmBehavior.Replace,
-				select = true,
-			}),
-
-			["<CR>"] = cmp.mapping.confirm({
-				behavior = cmp.ConfirmBehavior.Replace,
-				select = true,
-			}),
-
-			["<A-e>"] = cmp.mapping({
-				i = cmp.mapping.abort(),
-				c = cmp.mapping.close(),
-			}),
+		signature = {
+			enabled = true,
 		},
 
-		sources = cmp.config.sources({
-			{ name = "nvim_lsp_signature_help" },
-			{ name = "luasnip", group_index = 2, keyword_length = 2 },
-			{ name = "nvim_lsp", group_index = 2 },
-			{ name = "nvim_lua", group_index = 2 },
-			{ name = "buffer", group_index = 2, keyword_length = 4 },
-			{ name = "path" },
-			{ name = "neorg" },
-			-- { name = 'ultisnips' }, -- For ultisnips users.
-			-- { name = 'snippy' }, -- For snippy users.
-		}),
+		appearance = {
+			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+			-- Adjusts spacing to ensure icons are aligned
+			nerd_font_variant = "mono",
+		},
 
-		experimental = { ghost_text = false },
+		-- (Default) Only show the documentation popup when manually triggered
+		completion = { documentation = { auto_show = true } },
 
-		confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
-
-		-- window = { documentation = { border = "single" }, completion = { side_padding = 2, border = "single" } },
-		preselect = cmp.PreselectMode.None,
-	})
-
-	-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-	cmp.setup.cmdline("/", {
-		mapping = cmp.mapping.preset.cmdline(),
+		-- Default list of enabled providers defined so that you can extend it
+		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			{ name = "buffer" },
+			default = { "lsp", "path", "snippets", "buffer" },
 		},
-	})
 
-	-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-	cmp.setup.cmdline(":", {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = cmp.config.sources({
-			{ name = "path" },
-		}, {
-			{ name = "cmdline" },
-		}),
-	})
-end
-
-M.lazy = {
-	"hrsh7th/nvim-cmp",
-	dependencies = {
-		"hrsh7th/cmp-nvim-lsp", --cmp source lsp
-		"hrsh7th/cmp-nvim-lua", --cmp source nvim lua
-		"hrsh7th/cmp-buffer", --cmp source buffer
-		"hrsh7th/cmp-path", --cmp source path
-		"hrsh7th/cmp-cmdline", --cmp source cmd
-		"saadparwaiz1/cmp_luasnip", --for snippets
-		"onsails/lspkind-nvim", --customizing cmp
-		"hrsh7th/cmp-nvim-lsp-signature-help",
+		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+		-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+		-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+		--
+		-- See the fuzzy documentation for more information
+		fuzzy = { implementation = "prefer_rust" },
 	},
-	config = config,
+	opts_extend = { "sources.default" },
 }
-return M.lazy
+-- local M = {}
+-- local config = function()
+-- 	local kind_icons = require("utils.icons").kind
+--
+-- 	for _, k in ipairs(vim.tbl_keys(kind_icons)) do
+-- 		vim.cmd("hi CmpItemKind" .. k .. " gui=reverse")
+-- 	end
+--
+-- 	local cmp_status_ok, cmp = pcall(require, "cmp")
+-- 	if not cmp_status_ok then
+-- 		return
+-- 	end
+--
+--
+-- 	local has_words_before = function()
+-- 		unpack = unpack or table.unpack
+-- 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+-- 		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+-- 	end
+--
+-- 	cmp.setup({
+-- 		snippet = {
+-- 			expand = function(args)
+-- 				require("luasnip").lsp_expand(args.body)
+-- 			end,
+-- 		},
+--         completion= {
+--         -- autocomplete= false,
+--     },
+-- 		formatting = { -- {{{ the good kind
+-- 			fields = { "kind", "abbr" },
+-- 			format = function(entry, vim_item)
+-- 				local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+-- 				local strings = vim.split(kind.kind, "%s", { trimempty = true })
+-- 				kind.kind = "" .. strings[1] .. ""
+-- 				-- kind.menu = "    (" .. strings[2] .. ")"
+--
+-- 				return kind
+-- 			end,
+-- 		}, -- }}}
+-- 		-- formatting = {
+-- 		-- 	fields = { "kind", "abbr", "menu" },
+-- 		-- 	format = function(_, item)
+-- 		-- 		item.kind = (" " .. kind_icons[item.kind]) or " "
+-- 		-- 		-- item.menu = source_names[entry.source.name] or " "
+-- 		-- 		return item
+-- 		-- 	end,
+-- 		-- },
+--
+-- 		mapping = {
+-- 			["<A-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+-- 			["<A-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+-- 			["<A-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+-- 			["<A-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+--
+-- 			["<A-j>"] = cmp.mapping(function(fallback)
+-- 				if cmp.visible() then
+-- 					cmp.select_next_item()
+-- 				elseif has_words_before() then
+-- 					cmp.complete()
+-- 				else
+-- 					fallback()
+-- 				end
+-- 			end, { "i", "s" }),
+--
+-- 			["<A-k>"] = cmp.mapping(function(fallback)
+-- 				if cmp.visible() then
+-- 					cmp.select_prev_item()
+-- 				else
+-- 					fallback()
+-- 				end
+-- 			end, { "i", "s" }),
+--
+-- 			["<A-l>"] = cmp.mapping.confirm({
+-- 				behavior = cmp.ConfirmBehavior.Replace,
+-- 				select = true,
+-- 			}),
+--
+-- 			["<CR>"] = cmp.mapping.confirm({
+-- 				behavior = cmp.ConfirmBehavior.Replace,
+-- 				select = true,
+-- 			}),
+--
+-- 			["<A-e>"] = cmp.mapping({
+-- 				i = cmp.mapping.abort(),
+-- 				c = cmp.mapping.close(),
+-- 			}),
+-- 		},
+--
+-- 		sources = cmp.config.sources({
+-- 			{ name = "nvim_lsp_signature_help" },
+-- 			{ name = "luasnip", group_index = 2, keyword_length = 2 },
+-- 			{ name = "nvim_lsp", group_index = 2 },
+-- 			{ name = "nvim_lua", group_index = 2 },
+-- 			{ name = "buffer", group_index = 2, keyword_length = 4 },
+-- 			{ name = "path" },
+-- 			{ name = "neorg" },
+-- 			-- { name = 'ultisnips' }, -- For ultisnips users.
+-- 			-- { name = 'snippy' }, -- For snippy users.
+-- 		}),
+--
+-- 		experimental = { ghost_text = false },
+--
+-- 		confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
+--
+-- 		-- window = { documentation = { border = "single" }, completion = { side_padding = 2, border = "single" } },
+-- 		preselect = cmp.PreselectMode.None,
+-- 	})
+--
+-- 	-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+-- 	cmp.setup.cmdline("/", {
+-- 		mapping = cmp.mapping.preset.cmdline(),
+-- 		sources = {
+-- 			{ name = "buffer" },
+-- 		},
+-- 	})
+--
+-- 	-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+-- 	cmp.setup.cmdline(":", {
+-- 		mapping = cmp.mapping.preset.cmdline(),
+-- 		sources = cmp.config.sources({
+-- 			{ name = "path" },
+-- 		}, {
+-- 			{ name = "cmdline" },
+-- 		}),
+-- 	})
+-- end
+--
+-- M.lazy = {
+-- 	"hrsh7th/nvim-cmp",
+-- 	dependencies = {
+-- 		"hrsh7th/cmp-nvim-lsp", --cmp source lsp
+-- 		"hrsh7th/cmp-nvim-lua", --cmp source nvim lua
+-- 		"hrsh7th/cmp-buffer", --cmp source buffer
+-- 		"hrsh7th/cmp-path", --cmp source path
+-- 		"hrsh7th/cmp-cmdline", --cmp source cmd
+-- 		"saadparwaiz1/cmp_luasnip", --for snippets
+-- 		"onsails/lspkind-nvim", --customizing cmp
+-- 		"hrsh7th/cmp-nvim-lsp-signature-help",
+-- 	},
+-- 	config = config,
+-- }
+-- return M.lazy
