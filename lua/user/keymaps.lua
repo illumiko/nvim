@@ -1,6 +1,6 @@
 local imap = require("utils.maps").imap
 local cmap = require("utils.maps").cmap
-
+local export = {}
 local opts = function(x)
 	return { noremap = true, silent = true, desc = x }
 end
@@ -113,15 +113,15 @@ autocmd TermEnter term://*toggleterm#*
 ]])
 
 --Luasnip stuff
-vim.cmd([[
-" press <Tab> to expand or jump in a snippet. These can also be mapped separately
-" via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
-imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<cmd>lua require("luasnip").jump(1)<cr>' : '<Tab>' 
-" -1 for jumping backwards.
-inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
-snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
-snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
-]])
+-- vim.cmd([[
+-- " press <Tab> to expand or jump in a snippet. These can also be mapped separately
+-- " via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
+-- imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<cmd>lua require("luasnip").jump(1)<cr>' : '<Tab>' 
+-- " -1 for jumping backwards.
+-- inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+-- snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+-- snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+-- ]])
 
 vim.keymap.set("i", "<c-s>", function()
 	if ls.choice_active() then
@@ -141,3 +141,33 @@ end)
 -- imap("jk", "<cmd>LuaSnipUnlinkCurrent<CR><ESC>", {silent=true})
 imap("jk", "<ESC>", { silent = true })
 -- cmap("jk", "<ESC>", opts(""))
+
+export.python = function ()
+    vim.keymap.set('n', '<Leader>dS', function() require('dap').continue() end)
+    vim.keymap.set('n', '<Leader>dso', function() require('dap').step_over() end)
+    vim.keymap.set('n', '<Leader>dsi', function() require('dap').step_into() end)
+    vim.keymap.set('n', ']', function() require('dap').step_into() end)
+    vim.keymap.set('n', '[', function() require('dap').step_over() end)
+    vim.keymap.set('n', '<Leader>dsoo', function() require('dap').step_out() end)
+    vim.keymap.set('n', '<Leader>db', function() require('dap').toggle_breakpoint() end)
+    -- vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+    vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+    vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+    vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
+    vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+      require('dap.ui.widgets').hover()
+    end)
+    vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
+      require('dap.ui.widgets').preview()
+    end)
+    vim.keymap.set('n', '<Leader>df', function()
+      local widgets = require('dap.ui.widgets')
+      widgets.centered_float(widgets.frames)
+    end)
+    vim.keymap.set('n', '<Leader>ds', function()
+      local widgets = require('dap.ui.widgets')
+      widgets.centered_float(widgets.scopes)
+    end)
+end
+
+return export
