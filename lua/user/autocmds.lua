@@ -1,6 +1,6 @@
 -- This file is automatically loaded by lazyvim.config.init
 local function augroup(name)
-	return vim.api.nvim_create_augroup("vim_" .. name, { clear = true })
+	return vim.api.nvim_create_augroup("vim_" .. name, {clear=true})
 end
 -- Check if we need to reload the file when it changed
 -- vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
@@ -11,8 +11,9 @@ end
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = augroup("highlight_yank"),
+    pattern = "*",
 	callback = function()
-		vim.highlight.on_yank()
+		vim.highlight.on_yank({higroup = 'IncSearch', timeout= 100})
 	end,
 })
 
