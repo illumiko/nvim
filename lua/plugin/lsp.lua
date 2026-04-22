@@ -1,6 +1,6 @@
 vim.lsp.enable({
-	-- "pyright",
-	"jedi_language_server",
+	"pyright",
+	-- "jedi_language_server",
 	"java_language_server",
 	"qmlls",
 	"lua_ls",

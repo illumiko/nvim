@@ -26,9 +26,10 @@ return {
 		--
 		-- See :h blink-cmp-config-keymap for defining your own keymap
 		keymap = {
+            preset = 'none',
 			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 			["<C-e>"] = { "hide", "fallback" },
-			["<C-l>"] = { "select_and_accept", "fallback" },
+			["<A-l>"] = { "select_and_accept", "fallback" },
 
 			["<Up>"] = { "select_prev", "fallback" },
 			["<Down>"] = { "select_next", "fallback" },
@@ -58,6 +59,7 @@ return {
 
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
+        snippets = {preset = "luasnip"},
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
 		},

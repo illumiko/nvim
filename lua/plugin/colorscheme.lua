@@ -57,7 +57,7 @@ local plugins = {
     {"kdheepak/monochrome.nvim"},
     {    "rktjmp/lush.nvim",},
     {'AlexvZyl/nordic.nvim'},
-    {"rose-pine/neovim"}
+    {"rose-pine/neovim", name = 'rose-pine'}
 }
 
 return plugins
