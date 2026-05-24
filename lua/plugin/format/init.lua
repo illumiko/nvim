@@ -26,6 +26,9 @@ local config = function()
 					}
 				end,
 			},
+            cpp = {
+                require("plugin.format.filetype_conf.cpp").clangformat
+            },
 			json = {
 				require("plugin.format.filetype_conf.json").prettier,
 			},

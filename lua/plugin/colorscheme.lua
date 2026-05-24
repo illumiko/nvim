@@ -11,7 +11,7 @@ config.kanagawa = function()
 		variablebuiltinStyle = {},
 		specialReturn = true, -- special highlight for the return keyword
 		specialException = true, -- special highlight for exception handling keywords
-        transparent = false, -- do not set background color
+		transparent = false, -- do not set background color
 		dimInactive = true, -- dim inactive window `:h hl-NormalNC`
 		globalStatus = true,
 	})
@@ -44,20 +44,19 @@ hi TreesitterContext guibg=#222222
 ]=])
 end
 
-config.zenbones = function ()
-    
-end
+config.zenbones = function() end
 
 local plugins = {
 	{ "ellisonleao/gruvbox.nvim", lazy = false, config = config.gruvbox },
 	{ "rockyzhang24/arctic.nvim", branch = "v2" }, --vscode theme pretty good
-    {"olimorris/onedarkpro.nvim", priority=1000},
-	{ "rebelot/kanagawa.nvim", lazy = false, config = config.kanagawa }, 
-    {"zenbones-theme/zenbones.nvim"},
-    {"kdheepak/monochrome.nvim"},
-    {    "rktjmp/lush.nvim",},
-    {'AlexvZyl/nordic.nvim'},
-    {"rose-pine/neovim", name = 'rose-pine'}
+	{ "olimorris/onedarkpro.nvim", priority = 1000 },
+	{ "rebelot/kanagawa.nvim", lazy = false, config = config.kanagawa },
+	{ "zenbones-theme/zenbones.nvim" },
+	{ "kdheepak/monochrome.nvim" },
+	{ "rktjmp/lush.nvim" },
+	{ "AlexvZyl/nordic.nvim" },
+	{ "rose-pine/neovim", name = "rose-pine" },
+	{ "rmehri01/onenord.nvim", config = true },
 }
 
 return plugins

@@ -1,4 +1,4 @@
-vim.cmd[[TSEnable highlight]]
+-- vim.cmd[[TSEnable highlight]]
 local x = require("user.keymaps")
 vim.g.mapleader = " "
 local opts = function(x)

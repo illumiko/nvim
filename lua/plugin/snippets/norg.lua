@@ -10,18 +10,18 @@ return {
 	-- 	{ trig = "daily", wordTrig = true, regTrig = false, snippetType = "snippet" },
 	-- 	fmta(
 	-- 		[=[** Daily
- --   - ( ) Eye drop
- --   -- ( ) 1
- --   -- ( ) 2
- --   -- ( ) 3
- --   -- ( ) 4
+	--   - ( ) Eye drop
+	--   -- ( ) 1
+	--   -- ( ) 2
+	--   -- ( ) 3
+	--   -- ( ) 4
 	--
- --   - ( ) Namaj
- --   -- ( ) Fazr
- --   -- ( ) Jumma
- --   -- ( ) Asr
- --   -- ( ) Magrib
- --   -- ( ) Asha <> ]=],
+	--   - ( ) Namaj
+	--   -- ( ) Fazr
+	--   -- ( ) Jumma
+	--   -- ( ) Asr
+	--   -- ( ) Magrib
+	--   -- ( ) Asha <> ]=],
 	-- 		{ i(0) }
 	-- 	)
 	-- ),
@@ -288,7 +288,7 @@ return {
 			time.duration = vim.fn.input("Enter duration(24H:M) ")
 			time.end_time = os.date("%H:%M")
 
-			helper_functions.into_seconds = function(type,time) -- type: duration || clock
+			helper_functions.into_seconds = function(type, time) -- type: duration || clock
 				local hour = tonumber(string.sub(time, 1, 2))
 				local min = tonumber(string.sub(time, 4, 5))
 
@@ -332,8 +332,8 @@ return {
 
 			-- end_time got, duraiton got, now calc start time
 			M.main = function(duration, end_time)
-				local end_time_seconds = helper_functions.into_seconds("",end_time)
-				local duraiton_seconds = helper_functions.into_seconds("duration",duration)
+				local end_time_seconds = helper_functions.into_seconds("", end_time)
+				local duraiton_seconds = helper_functions.into_seconds("duration", duration)
 				local start_time =
 					helper_functions.tbl_to_string(helper_functions.into_time(end_time_seconds - duraiton_seconds))
 				return helper_functions.format(start_time, end_time, duration)

@@ -1,4 +1,4 @@
-vim.cmd([[TSEnable highlight]])
+-- vim.cmd([[TSEnable highlight]])
 
 vim.g.mapleader = " "
 local opts = function(x)

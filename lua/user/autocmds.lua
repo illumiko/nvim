@@ -101,6 +101,14 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
 		vim.cmd.write()
 	end,
 })
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+	group = augroup("autosave"),
+	pattern = { "*.cpp", "*.lua",  },
+	callback = function()
+        vim.cmd("FormatWrite")
+		vim.cmd.write()
+	end,
+})
 vim.api.nvim_create_autocmd({"CursorHold","CursorHoldI"},{
     group = augroup("hover_hl"),
     callback = function() 
