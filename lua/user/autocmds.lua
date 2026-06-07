@@ -1,6 +1,6 @@
 -- This file is automatically loaded by lazyvim.config.init
 local function augroup(name)
-	return vim.api.nvim_create_augroup("vim_" .. name, {clear=true})
+	return vim.api.nvim_create_augroup("vim_" .. name, { clear = true })
 end
 -- Check if we need to reload the file when it changed
 -- vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
@@ -11,9 +11,9 @@ end
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = augroup("highlight_yank"),
-    pattern = "*",
+	pattern = "*",
 	callback = function()
-		vim.highlight.on_yank({higroup = 'IncSearch', timeout= 100})
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 100 })
 	end,
 })
 
@@ -90,34 +90,43 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	callback = function()
 		vim.cmd("set formatoptions-=cro")
 		vim.cmd("set signcolumn=yes")
-        -- vim.cmd("set foldlevelstart=0")
+		-- vim.cmd("set foldlevelstart=0")
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-	group = augroup("autosave"),
-	pattern = { "*.go", "*.lua",  },
+-- vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+-- 	group = augroup("autosave"),
+-- 	pattern = { "*.go", "*.lua" },
+-- 	callback = function()
+-- 		vim.cmd.write()
+-- 	end,
+-- })
+-- vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+-- 	group = augroup("autosave"),
+-- 	pattern = { "*.cpp", "*.lua" },
+-- 	callback = function()
+-- 		vim.cmd("FormatWrite")
+-- 		vim.cmd.write()
+-- 	end,
+-- })
+
+-- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+-- 	group = augroup("format_on_save"),
+-- 	pattern = { "*.cpp", "*.lua" },
+-- 	callback = function()
+-- 		vim.cmd("Format")
+-- 		-- vim.cmd.write()
+-- 	end,
+-- })
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+	group = augroup("hover_hl"),
 	callback = function()
-		vim.cmd.write()
+		vim.lsp.buf.document_highlight()
 	end,
 })
-vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-	group = augroup("autosave"),
-	pattern = { "*.cpp", "*.lua",  },
+vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+	group = augroup("hover_hl"),
 	callback = function()
-        vim.cmd("FormatWrite")
-		vim.cmd.write()
+		vim.lsp.buf.clear_references()
 	end,
-})
-vim.api.nvim_create_autocmd({"CursorHold","CursorHoldI"},{
-    group = augroup("hover_hl"),
-    callback = function() 
-        vim.lsp.buf.document_highlight()
-    end
-})
-vim.api.nvim_create_autocmd({"CursorMoved"},{
-    group = augroup("hover_hl"),
-    callback = function() 
-        vim.lsp.buf.clear_references()
-    end
 })

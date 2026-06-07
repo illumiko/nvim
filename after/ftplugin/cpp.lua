@@ -24,7 +24,7 @@ local function compile_and_run_cpp()
 		vim.cmd("bdelete!")
 	end, { buffer = buf, desc = "Close terminal" })
 	-- Optionally, set the terminal to insert mode so you can interact with the program
-	vim.cmd("startinsert")
+	-- vim.cmd("startinsert")
 end
 
 -- Map the function to a key, e.g., <F5>

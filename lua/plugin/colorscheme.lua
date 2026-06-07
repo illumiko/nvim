@@ -1,10 +1,9 @@
 local config = {}
-
 config.kanagawa = function()
 	require("kanagawa").setup({
 		undercurl = true, -- enable undercurls
-		commentStyle = { italic = false },
-		functionStyle = { italic = false },
+		commentStyle = { italic = true },
+		functionStyle = { italic = true },
 		keywordStyle = { bold = true },
 		statementStyle = { bold = true },
 		typeStyle = { bold = true, italic = false },
@@ -27,12 +26,12 @@ config.gruvbox = function()
 		bold = true,
 		-- italic = true,
 		strikethrough = true,
-		invert_selection = false,
+		invert_selection = true,
 		invert_signs = false,
 		invert_tabline = false,
 		invert_intend_guides = true,
 		inverse = false, -- invert background for search, diffs, statuslines and errors
-		contrast = "soft", -- can be "hard", "soft" or empty string
+		contrast = "hard", -- can be "hard", "soft" or empty string
 		palette_overrides = {},
 		overrides = {},
 		dim_inactive = true,
@@ -57,6 +56,7 @@ local plugins = {
 	{ "AlexvZyl/nordic.nvim" },
 	{ "rose-pine/neovim", name = "rose-pine" },
 	{ "rmehri01/onenord.nvim", config = true },
+	{ "maxmx03/solarized.nvim" },
 }
 
 return plugins

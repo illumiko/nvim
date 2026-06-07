@@ -11,7 +11,7 @@ local config = function()
 				require("plugin.format.filetype_conf.lua").stylua,
 			},
 			javascript = {
-				require("plugin.format.filetype_conf.javascript").prettiereslint,
+				-- require("plugin.format.filetype_conf.javascript").prettiereslint,
 				function()
 					return {
 						exe = "prettier-eslint",
@@ -26,9 +26,21 @@ local config = function()
 					}
 				end,
 			},
-            cpp = {
-                require("plugin.format.filetype_conf.cpp").clangformat
-            },
+			cpp = {
+				-- require("plugin.format.filetype_conf.cpp").clangformat,
+				function()
+					return {
+						exe = "clang-format",
+						args = {
+							"-style='{BasedOnStyle: LLVM, BreakBeforeBraces: Allman, IndentWidth: 4}'",
+							"--assume-filename",
+							util.escape_path(util.get_current_buffer_file_name()),
+						},
+						try_node_modules = true,
+						stdin = true,
+					}
+				end,
+			},
 			json = {
 				require("plugin.format.filetype_conf.json").prettier,
 			},
@@ -47,6 +59,14 @@ local config = function()
 			-- vimwiki = {
 			-- 	require("plugin.format.filetype_conf.markdown").markdownlint,
 			-- },
+			["*"] = {
+				-- "formatter.filetypes.any" defines default configurations for any
+				-- filetype
+				require("formatter.filetypes.any").remove_trailing_whitespace,
+
+				-- Remove trailing whitespace without 'sed'
+				-- require("formatter.filetypes.any").substitute_trailing_whitespace,
+			},
 		},
 	})
 	vim.cmd([[
@@ -56,6 +76,7 @@ augroup FormatAutogroup
 augroup END
 ]])
 end
+
 local confi = function()
 	-- Utilities for creating configurations
 	local util = require("formatter.util")
