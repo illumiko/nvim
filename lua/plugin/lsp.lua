@@ -51,6 +51,11 @@ vim.lsp.config["gopls"] = {
 }
 vim.diagnostic.config({ virtual_text = { current_line = true } })
 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+vim.treesitter.language.add("cpp")
+vim.treesitter.language.add("python")
+vim.treesitter.language.add("lua")
+vim.treesitter.language.add("go")
+
 return {
 	"neovim/nvim-lspconfig",
 	-- "MysticalDevil/inlay-hints.nvim",
