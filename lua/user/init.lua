@@ -8,7 +8,7 @@ require("user.autocmds")
 -- vim.cmd("set background=light")
 -- vim.cmd("colorscheme onenord")
 -- vim.cmd("colorscheme arctic")
-vim.o.background = 'light'
+vim.o.background = 'dark'
 require("solarized").setup({
 	styles = {
 		enabled = true,

@@ -56,29 +56,49 @@ local normal_keybinds = Binds:new("n", {
 	{ [[yi"]], [["+yi"]], opts("") },
 	{ [[yi)]], [["+yi)]], opts("") },
 
-	--Norg
+    {[[<leader>wk]], 
+    function ()
+       vim.cmd("resize +".. vim.v.count1)
+    end,
+    opts("")},
+    {[[<leader>wj]],
+    function ()
+       vim.cmd("resize -".. vim.v.count1)
+    end
+    ,opts("")},
+    {[[<leader>wl]],
+    function ()
+       vim.cmd("vertical resize -".. vim.v.count1)
+    end,
+    opts("")},
+    {[[<leader>wh]],
+    function ()
+       vim.cmd("vertical resize +".. vim.v.count1)
+    end
+    ,opts("")},
+	--norg
 
-	--Format
-	{ "<leader>F", ":FormatWrite<CR>", opts("Format") },
+	--format
+	{ "<leader>F", ":FormatWrite<cr>", opts("format") },
 
-	--Clear hlsearch
-	{ "<Leader>H", ":set hlsearch!<CR>", opts("clear hls") },
+	--clear hlsearch
+	{ "<leader>h", ":set hlsearch!<cr>", opts("clear hls") },
 
-	--Swap window
-	{ "<C-x>", "<C-w>x", opts("") },
+	--swap window
+	{ "<c-x>", "<c-w>x", opts("") },
 
-	--Tab next/previous
-	{ "<leader>tp", ":tabprevious<CR>", opts("") },
-	{ "<leader>tn", ":tabnext<CR>", opts("") },
+	--tab next/previous
+	{ "<leader>tp", ":tabprevious<cr>", opts("") },
+	{ "<leader>tn", ":tabnext<cr>", opts("") },
 
-	--Buffer next/previous
-	{ "<S-l>", ":bnext<CR>", opts("") },
-	{ "<S-h>", ":bprevious<CR>", opts("") },
+	--buffer next/previous
+	{ "<s-l>", ":bnext<cr>", opts("") },
+	{ "<s-h>", ":bprevious<cr>", opts("") },
 
-	--Switch to original buffer from a jump
+	--switch to original buffer from a jump
 	{ "<bs>", ":edit #<cr>", opts("") },
 
-	--I forgot
+	--i forgot
 	{ "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true } },
 	{ "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true } },
 
@@ -89,22 +109,23 @@ local normal_keybinds = Binds:new("n", {
 	{ "<c-l>", "<c-w>l", opts("") },
 
 	--jk remap
-	{ "jk", "<ESC>", opts("") },
-})
-local terminal_keybindings = Binds:new("t", {
-	{ "jk", [[<C-\><C-n>]], opts("") },
+	{ "jk", "<esc>", opts("") },
 })
 
--- local insert_keybinds = Binds:new("i", {
---     -- {"<A-m>","<c-x><c-o>",opts("")},
---     -- {"<A-f>","<c-x><c-f>",opts("")},
---     -- {"<A-u>","<c-x><c-u>",opts("")},
---     -- {"<A-j>","<c-n>",opts("")},
---     -- {"<A-k>","<c-p>",opts("")},
+local terminal_keybindings = Binds:new("t", {
+	{ "jk", [[<c-\><c-n>]], opts("") },
+})
+
+-- local insert_keybinds = binds:new("i", {
+--     -- {"<a-m>","<c-x><c-o>",opts("")},
+--     -- {"<a-f>","<c-x><c-f>",opts("")},
+--     -- {"<a-u>","<c-x><c-u>",opts("")},
+--     -- {"<a-j>","<c-n>",opts("")},
+--     -- {"<a-k>","<c-p>",opts("")},
 --
 -- })
 
---TogTerm toggle
+--togterm toggle
 vim.cmd([[ "sets the close key for toggle term
 " set
 autocmd TermEnter term://*toggleterm#*
