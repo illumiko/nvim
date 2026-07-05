@@ -57,6 +57,7 @@ local plugins = {
 	{ "rose-pine/neovim", name = "rose-pine" },
 	{ "rmehri01/onenord.nvim", config = true },
 	{ "maxmx03/solarized.nvim" },
+    {"edeneast/nightfox.nvim"},
 }
 
 return plugins
