@@ -128,12 +128,14 @@ keys = {
 		desc = "Spell Suggest",
 		silent = true,
 	},
+
 }
 
 M.lazy = {
 	"nvim-telescope/telescope.nvim",
 	config = config,
 	keys = keys,
+    lazy= false,
 	dependencies = {
 		"nvim-telescope/telescope-file-browser.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" }, -- session picker

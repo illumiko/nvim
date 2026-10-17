@@ -113,6 +113,8 @@ vim.cmd([[
     hi link pyKeyword Keyword
     hi! link Conceal Operator
     "setlocal conceallevel=2
-]])
 
+"hi TreesitterContextBottom gui=underline guisp=Grey
+"hi TreesitterContextLineNumberBottom gui=underline guisp=Grey
+]])
 -- }}}

@@ -20,33 +20,26 @@ hi link CmpPmenu Normal
 end
 
 config.gruvbox = function()
-	require("gruvbox").setup({
-		undercurl = true,
-		underline = true,
-		bold = true,
-		-- italic = true,
-		strikethrough = true,
-		invert_selection = true,
-		invert_signs = false,
-		invert_tabline = false,
-		invert_intend_guides = true,
-		inverse = false, -- invert background for search, diffs, statuslines and errors
-		contrast = "hard", -- can be "hard", "soft" or empty string
-		palette_overrides = {},
-		overrides = {},
-		dim_inactive = true,
-		transparent_mode = false,
-	})
 	vim.cmd([=[
-hi IndentBlanklineChar guifg=none
-hi TreesitterContext guibg=#222222
+    let g:gruvbox_material_background = "soft"
+    let g:gruvbox_material_foreground = "original"
+    let g:gruvbox_material_cursor = "red"
+    let g:gruvbox_material_dim_inactive_window = 1
+"hi IndentBlanklineChar guifg=none
+"hi TreesitterContext guibg=#222222
 ]=])
 end
 
 config.zenbones = function() end
 
 local plugins = {
-	{ "ellisonleao/gruvbox.nvim", lazy = false, config = config.gruvbox },
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
+	{ "sainnhe/gruvbox-material" },
 	{ "rockyzhang24/arctic.nvim", branch = "v2" }, --vscode theme pretty good
 	{ "olimorris/onedarkpro.nvim", priority = 1000 },
 	{ "rebelot/kanagawa.nvim", lazy = false, config = config.kanagawa },
@@ -55,9 +48,42 @@ local plugins = {
 	{ "rktjmp/lush.nvim" },
 	{ "AlexvZyl/nordic.nvim" },
 	{ "rose-pine/neovim", name = "rose-pine" },
-	{ "rmehri01/onenord.nvim", config = true },
-	{ "maxmx03/solarized.nvim" },
-    {"edeneast/nightfox.nvim"},
+	{ "rmehri01/onenord.nvim", config = false },
+	-- {
+	-- 	"masisz/wisteria.nvim",
+	-- 	name = "wisteria",
+	-- 	opts = {
+	-- 		style = "dark", -- "dark" or "light"
+	-- 		transparent = true,
+	-- 		---@type fun(colors:WisteriaColors):HighlightSpec
+	-- 		overrides = function(colors)
+	-- 			return {}
+	-- 		end,
+	-- 	},
+	-- },
+	{
+		"maxmx03/solarized.nvim",
+		config = function()
+			require("solarized").setup({
+				transparent = {
+					enabled = false, -- Master switch to enable transparency
+					pmenu = false, -- Popup menu (e.g., autocomplete suggestions)
+					normal = true, -- Main editor window background
+					normalfloat = false, -- Floating windows
+					neotree = true, -- Neo-tree file explorer
+					nvimtree = true, -- Nvim-tree file explorer
+					whichkey = false, -- Which-key popup
+					telescope = false, -- Telescope fuzzy finder
+					lazy = false, -- Lazy plugin manager UI
+					mason = false, -- Mason manage external tooling
+				},
+			})
+		end,
+	},
+	{ "edeneast/nightfox.nvim" },
+	{
+		"silentium-theme/silentium.nvim",
+	},
 }
 
 return plugins

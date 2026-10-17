@@ -90,6 +90,7 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	callback = function()
 		vim.cmd("set formatoptions-=cro")
 		vim.cmd("set signcolumn=yes")
+        vim.cmd("hi TelescopeSelection guibg=#514b49")
 		-- vim.cmd("set foldlevelstart=0")
 	end,
 })

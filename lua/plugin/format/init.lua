@@ -26,6 +26,21 @@ local config = function()
 					}
 				end,
 			},
+			c = {
+				-- require("plugin.format.filetype_conf.cpp").clangformat,
+				function()
+					return {
+						exe = "clang-format",
+						args = {
+							"-style='{BasedOnStyle: LLVM, BreakBeforeBraces: Allman, IndentWidth: 4}'",
+							"--assume-filename",
+							util.escape_path(util.get_current_buffer_file_name()),
+						},
+						try_node_modules = true,
+						stdin = true,
+					}
+				end,
+			},
 			cpp = {
 				-- require("plugin.format.filetype_conf.cpp").clangformat,
 				function()
