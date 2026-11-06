@@ -111,6 +111,12 @@ keys = {
 		silent = true,
 	},
 	{
+		"<leader>ht",
+		"<cmd>lua require('telescope.builtin').colorscheme()<CR>",
+		desc = "Grep Directory",
+		silent = true,
+	},
+	{
 		"<leader>fg",
 		"<cmd>lua require('telescope.builtin').live_grep()<CR>",
 		desc = "Grep Directory",
