@@ -7,10 +7,11 @@ local config = function()
 	end
 	telescope.setup({
 		defaults = {
-			layout_strategies = cursor,
+			layout_strategies = "ivy",
 			prompt_prefix = " ",
 			selection_caret = " ",
 			path_display = { "smart" },
+            preview = {treesitter =false,highlight_limit=false},
 			mappings = {
 				n = {
 					["q"] = actions.close,
@@ -70,64 +71,64 @@ local config = function()
 	telescope.load_extension("file_browser")
 end
 keys = {
-	{
-		"<leader>fh",
-		"<cmd>lua require('telescope.builtin').help_tags()<CR>",
-		desc = "help menu picker",
-	},
-	{
-		"<leader>fp",
-		"<cmd>lua require('telescope.builtin').find_files({cwd='~/Documents/Projects/'})<CR>",
-		desc = "Project Files",
-	},
-	{
-		"<leader>fd",
-		"<cmd>lua require('telescope.builtin').find_files({cwd='~/dotfiles/'})<CR>",
-		desc = "Config Files",
-		silent = true,
-	},
-	{
-		"<leader>bb",
-		":Telescope buffers theme=ivy<CR>",
-		desc = "Find Files",
-		silent = true,
-	},
-	{
-		"<leader>ff",
-		":Telescope find_files theme=ivy<CR>",
-		desc = "Find Files",
-		silent = true,
-	},
+	-- {
+	-- 	"<leader>fh",
+	-- 	"<cmd>lua require('telescope.builtin').help_tags()<CR>",
+	-- 	desc = "help menu picker",
+	-- },
+	-- {
+	-- 	"<leader>fp",
+	-- 	"<cmd>lua require('telescope.builtin').find_files({cwd='~/Documents/Projects/'})<CR>",
+	-- 	desc = "Project Files",
+	-- },
+	-- {
+	-- 	"<leader>fd",
+	-- 	"<cmd>lua require('telescope.builtin').find_files({cwd='~/dotfiles/'})<CR>",
+	-- 	desc = "Config Files",
+	-- 	silent = true,
+	-- },
+	-- {
+	-- 	"<leader>bb",
+	-- 	":Telescope buffers theme=ivy<CR>",
+	-- 	desc = "Find Files",
+	-- 	silent = true,
+	-- },
+	-- {
+	-- 	"<leader>ff",
+	-- 	":Telescope find_files theme=ivy<CR>",
+	-- 	desc = "Find Files",
+	-- 	silent = true,
+	-- },
 	{
 		"<leader>e",
 		":Telescope file_browser path=%:p:h select_buffer=true<CR>",
 		desc = "File Browser",
 		silent = true,
 	},
-	{
-		"<leader>fr",
-		":Telescope oldfiles theme=ivy<CR>",
-		desc = "Old Files",
-		silent = true,
-	},
-	{
-		"<leader>ht",
-		"<cmd>lua require('telescope.builtin').colorscheme()<CR>",
-		desc = "Grep Directory",
-		silent = true,
-	},
-	{
-		"<leader>fg",
-		"<cmd>lua require('telescope.builtin').live_grep()<CR>",
-		desc = "Grep Directory",
-		silent = true,
-	},
-	{
-		"<S-Tab>",
-		":lua require('telescope.builtin').buffers()<CR>",
-		desc = "Buffer Picker",
-		silent = true,
-	},
+	-- {
+	-- 	"<leader>fr",
+	-- 	":Telescope oldfiles theme=ivy<CR>",
+	-- 	desc = "Old Files",
+	-- 	silent = true,
+	-- },
+	-- {
+	-- 	"<leader>ht",
+	-- 	"<cmd>lua require('telescope.builtin').colorscheme()<CR>",
+	-- 	desc = "Grep Directory",
+	-- 	silent = true,
+	-- },
+	-- {
+	-- 	"<leader>fg",
+	-- 	"<cmd>lua require('telescope.builtin').live_grep()<CR>",
+	-- 	desc = "Grep Directory",
+	-- 	silent = true,
+	-- },
+	-- {
+	-- 	"<S-Tab>",
+	-- 	":lua require('telescope.builtin').buffers()<CR>",
+	-- 	desc = "Buffer Picker",
+	-- 	silent = true,
+	-- },
 	{
 		"<leader>a",
 		":Telescope spell_suggest<CR>",
@@ -141,10 +142,10 @@ M.lazy = {
 	"nvim-telescope/telescope.nvim",
 	config = config,
 	keys = keys,
-    lazy= false,
+    lazy= true,
 	dependencies = {
 		"nvim-telescope/telescope-file-browser.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" }, -- session picker
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install' },
 	},
 }
 return M.lazy
