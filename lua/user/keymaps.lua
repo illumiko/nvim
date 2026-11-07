@@ -56,26 +56,34 @@ local normal_keybinds = Binds:new("n", {
 	{ [[yi"]], [["+yi"]], opts("") },
 	{ [[yi)]], [["+yi)]], opts("") },
 
-    {[[<leader>wk]], 
-    function ()
-       vim.cmd("resize +".. vim.v.count1)
-    end,
-    opts("")},
-    {[[<leader>wj]],
-    function ()
-       vim.cmd("resize -".. vim.v.count1)
-    end
-    ,opts("")},
-    {[[<leader>wl]],
-    function ()
-       vim.cmd("vertical resize -".. vim.v.count1)
-    end,
-    opts("")},
-    {[[<leader>wh]],
-    function ()
-       vim.cmd("vertical resize +".. vim.v.count1)
-    end
-    ,opts("")},
+	{
+		[[<leader>wk]],
+		function()
+			vim.cmd("resize +" .. vim.v.count1)
+		end,
+		opts(""),
+	},
+	{
+		[[<leader>wj]],
+		function()
+			vim.cmd("resize -" .. vim.v.count1)
+		end,
+		opts(""),
+	},
+	{
+		[[<leader>wl]],
+		function()
+			vim.cmd("vertical resize -" .. vim.v.count1)
+		end,
+		opts(""),
+	},
+	{
+		[[<leader>wh]],
+		function()
+			vim.cmd("vertical resize +" .. vim.v.count1)
+		end,
+		opts(""),
+	},
 	--norg
 
 	--format
@@ -110,7 +118,74 @@ local normal_keybinds = Binds:new("n", {
 
 	--jk remap
 	{ "jk", "<esc>", opts("") },
+
+	{
+		"<leader>fn",
+		"<cmd>lua require('fzf-lua').files({cwd='$HOME/dotfiles/nvim'})<CR>",
+		opts("help menu picker"),
+	},
+
+	{
+		"<leader>fh",
+		"<cmd>lua require('fzf-lua').helptags()<CR>",
+		opts("help menu picker"),
+	},
+	{
+		"<leader>fp",
+		"<cmd>lua require('fzf-lua').files({cwd='~/Documents/Projects/'})<CR>",
+		opts("Project Files"),
+	},
+	{
+		"<leader>fd",
+		"<cmd>lua require('fzf-lua').files({cwd='~/dotfiles/'})<CR>",
+		opts("Config Files"),
+	},
+	{
+		"<leader>B",
+		"<cmd>lua require('fzf-lua').buffers()<CR>",
+		opts("Buffers"),
+	},
+	{
+		"<leader>ff",
+		"<cmd>lua require('fzf-lua').files()<CR>",
+		opts("Find Files"),
+	},
+	-- {
+	-- 	"<leader>e",
+	-- 	"<cmd>lua require('fzf-lua').files({cwd=vim.fn.expand('%:p:h')})<CR>",
+	-- 	opts("File Browser"),
+	-- },
+	{
+		"<leader>fr",
+		"<cmd>lua require('fzf-lua').oldfiles()<CR>",
+		opts("Old Files"),
+	},
+	{
+		"<leader>ht",
+		"<cmd>lua require('fzf-lua').colorschemes()<CR>",
+		opts("Colorschemes"),
+	},
+	{
+		"<leader>fg",
+		"<cmd>lua require('fzf-lua').live_grep()<CR>",
+		opts("Grep Directory"),
+	},
+	{
+		"<S-Tab>",
+		"<cmd>lua require('fzf-lua').buffers()<CR>",
+		opts("Buffer Picker"),
+	},
 })
+
+local commandmode_keybindings = Binds:new("c", {
+	-- {"<a-j>","<Down>",opts("")},
+	-- {"<a-k>","<Up>",opts("")},
+	-- {"<c-n>","<Up>",opts("")},
+})
+vim.keymap.set("c", "<A-k>", "<Up>", { remap = false, desc = "Recall older command-line from history" })
+vim.keymap.set("c", "<A-j>", "<Down>", { remap = false, desc = "Recall newer command-line from history" })
+vim.keymap.set("c", "<A-h>", "<Left>", { remap = false, desc = "" })
+vim.keymap.set("c", "<A-l>", "<Right>", { remap = false, desc = "" })
 
 local terminal_keybindings = Binds:new("t", {
 	{ "jk", [[<c-\><c-n>]], opts("") },

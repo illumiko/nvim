@@ -53,4 +53,3 @@ require("user.highlights")
 -- hi TelescopeSelection guibg=#514b49
 -- ]])
 -- vim.cmd.colorscheme("gruvbox")
-
