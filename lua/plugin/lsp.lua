@@ -49,7 +49,7 @@ vim.lsp.config["gopls"] = {
 		},
 	},
 }
-vim.diagnostic.config({ virtual_text = { current_line = true } })
+vim.diagnostic.config({ virtual_text = { current_line = false } })
 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 vim.treesitter.language.add("cpp")
 vim.treesitter.language.add("python")
