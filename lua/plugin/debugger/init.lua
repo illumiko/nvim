@@ -48,13 +48,14 @@ local dap_python_config = function ()
 end
 return {
 	{ "mfussenegger/nvim-dap", config = dap_config },
+    ft = {"go","python"},
 	{ --dap view
 		"igorlfs/nvim-dap-view",
 		---@module 'dap-view'
 		---@type dapview.Config
 		opts = {},
 	},
-    {"https://codeberg.org/mfussenegger/nvim-dap-python", config = dap_python_config},
+    {"https://codeberg.org/mfussenegger/nvim-dap-python", config = dap_python_config, ft="python"},
 	-- {
 	-- 	"rcarriga/nvim-dap-ui",
 	-- 	dependencies = { "nvim-neotest/nvim-nio" },
@@ -75,6 +76,6 @@ return {
 	-- 	-- end,
 	-- },
 	{ --langauge specific
-		{ "leoluz/nvim-dap-go", config = true },
+		{ "leoluz/nvim-dap-go", config = true , ft="go"},
 	},
 }

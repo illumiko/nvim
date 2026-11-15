@@ -60,6 +60,7 @@ end
 M.lazy = {
 	"nvim-lualine/lualine.nvim",
     config = config,
+    event = "VeryLazy",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 }
 return M.lazy

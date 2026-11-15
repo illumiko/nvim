@@ -33,22 +33,22 @@ end
 config.zenbones = function() end
 
 local plugins = {
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-	},
-	{ "sainnhe/gruvbox-material" },
-	{ "rockyzhang24/arctic.nvim", branch = "v2" }, --vscode theme pretty good
-	{ "olimorris/onedarkpro.nvim", priority = 1000 },
-	{ "rebelot/kanagawa.nvim", lazy = false, config = config.kanagawa },
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {},
+	-- },
+	-- { "sainnhe/gruvbox-material" },
+	-- { "rockyzhang24/arctic.nvim", branch = "v2" }, --vscode theme pretty good
+	-- { "olimorris/onedarkpro.nvim", priority = 1000 },
+	-- { "rebelot/kanagawa.nvim", lazy = false, config = config.kanagawa },
 	{ "zenbones-theme/zenbones.nvim" },
-	{ "kdheepak/monochrome.nvim" },
-	{ "rktjmp/lush.nvim" },
-	{ "AlexvZyl/nordic.nvim" },
+	-- { "kdheepak/monochrome.nvim" },
+	-- { "rktjmp/lush.nvim" },
+	-- { "AlexvZyl/nordic.nvim" },
 	{ "rose-pine/neovim", name = "rose-pine" },
-	{ "rmehri01/onenord.nvim", config = false },
+	-- { "rmehri01/onenord.nvim", config = false },
 	-- {
 	-- 	"masisz/wisteria.nvim",
 	-- 	name = "wisteria",
@@ -61,29 +61,29 @@ local plugins = {
 	-- 		end,
 	-- 	},
 	-- },
-	{
-		"maxmx03/solarized.nvim",
-		config = function()
-			require("solarized").setup({
-				transparent = {
-					enabled = false, -- Master switch to enable transparency
-					pmenu = false, -- Popup menu (e.g., autocomplete suggestions)
-					normal = true, -- Main editor window background
-					normalfloat = false, -- Floating windows
-					neotree = true, -- Neo-tree file explorer
-					nvimtree = true, -- Nvim-tree file explorer
-					whichkey = false, -- Which-key popup
-					telescope = false, -- Telescope fuzzy finder
-					lazy = false, -- Lazy plugin manager UI
-					mason = false, -- Mason manage external tooling
-				},
-			})
-		end,
-	},
-	{ "edeneast/nightfox.nvim" },
-	{
-		"silentium-theme/silentium.nvim",
-	},
+	-- {
+	-- 	"maxmx03/solarized.nvim",
+	-- 	config = function()
+	-- 		require("solarized").setup({
+	-- 			transparent = {
+	-- 				enabled = false, -- Master switch to enable transparency
+	-- 				pmenu = false, -- Popup menu (e.g., autocomplete suggestions)
+	-- 				normal = true, -- Main editor window background
+	-- 				normalfloat = false, -- Floating windows
+	-- 				neotree = true, -- Neo-tree file explorer
+	-- 				nvimtree = true, -- Nvim-tree file explorer
+	-- 				whichkey = false, -- Which-key popup
+	-- 				telescope = false, -- Telescope fuzzy finder
+	-- 				lazy = false, -- Lazy plugin manager UI
+	-- 				mason = false, -- Mason manage external tooling
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
+	-- { "edeneast/nightfox.nvim" },
+	-- {
+	-- 	"silentium-theme/silentium.nvim",
+	-- },
 }
 
 return plugins

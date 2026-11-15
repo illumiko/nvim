@@ -8,6 +8,7 @@ vim.lsp.enable({
 	"emmet_language_server",
 	"ts_ls",
 	"clangd",
+    "jdtls",
 	-- "rust_analyzer",
 })
 vim.lsp.config["emmet_language_server"] = {

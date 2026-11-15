@@ -2,6 +2,80 @@ return {
 	"ibhagwan/fzf-lua",
 	-- optional for icon support
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- lazy = true,
+	keys = {
+		{
+			"<leader>fn",
+			function()
+				require("fzf-lua").files({ cwd = "$HOME/dotfiles/nvim" })
+			end,
+			desc = "help menu picker",
+		},
+		{
+			"<leader>fh",
+			function()
+				require("fzf-lua").helptags()
+			end,
+			desc = "help menu picker",
+		},
+		{
+			"<leader>fp",
+			function()
+				require("fzf-lua").files({ cwd = "~/Documents/Projects/" })
+			end,
+			desc = "Project Files",
+		},
+		{
+			"<leader>fd",
+			function()
+				require("fzf-lua").files({ cwd = "~/dotfiles/" })
+			end,
+			desc = "Config Files",
+		},
+		{
+			"<leader>B",
+			function()
+				require("fzf-lua").buffers()
+			end,
+			desc = "Buffers",
+		},
+		{
+			"<leader>ff",
+			function()
+				require("fzf-lua").files()
+			end,
+			desc = "Find Files",
+		},
+		{
+			"<leader>fr",
+			function()
+				require("fzf-lua").oldfiles()
+			end,
+			desc = "Old Files",
+		},
+		{
+			"<leader>ht",
+			function()
+				require("fzf-lua").colorschemes()
+			end,
+			desc = "Colorschemes",
+		},
+		{
+			"<leader>fg",
+			function()
+				require("fzf-lua").live_grep()
+			end,
+			desc = "Grep Directory",
+		},
+		{
+			"<S-Tab>",
+			function()
+				require("fzf-lua").buffers()
+			end,
+			desc = "Buffer Picker",
+		},
+	},
+	-- ... rest of your config
 	config = function()
 		local actions = require("fzf-lua.actions")
 		require("fzf-lua").setup({

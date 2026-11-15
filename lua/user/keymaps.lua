@@ -116,65 +116,65 @@ local normal_keybinds = Binds:new("n", {
 	{ "<c-h>", "<c-w>h", opts("") },
 	{ "<c-l>", "<c-w>l", opts("") },
 
-	--jk remap
-	{ "jk", "<esc>", opts("") },
+	-- --jk remap
+	-- { "jk", "<esc>", opts("") },
 
-	{
-		"<leader>fn",
-		"<cmd>lua require('fzf-lua').files({cwd='$HOME/dotfiles/nvim'})<CR>",
-		opts("help menu picker"),
-	},
-
-	{
-		"<leader>fh",
-		"<cmd>lua require('fzf-lua').helptags()<CR>",
-		opts("help menu picker"),
-	},
-	{
-		"<leader>fp",
-		"<cmd>lua require('fzf-lua').files({cwd='~/Documents/Projects/'})<CR>",
-		opts("Project Files"),
-	},
-	{
-		"<leader>fd",
-		"<cmd>lua require('fzf-lua').files({cwd='~/dotfiles/'})<CR>",
-		opts("Config Files"),
-	},
-	{
-		"<leader>B",
-		"<cmd>lua require('fzf-lua').buffers()<CR>",
-		opts("Buffers"),
-	},
-	{
-		"<leader>ff",
-		"<cmd>lua require('fzf-lua').files()<CR>",
-		opts("Find Files"),
-	},
 	-- {
-	-- 	"<leader>e",
-	-- 	"<cmd>lua require('fzf-lua').files({cwd=vim.fn.expand('%:p:h')})<CR>",
-	-- 	opts("File Browser"),
+	-- 	"<leader>fn",
+	-- 	"<cmd>lua require('fzf-lua').files({cwd='$HOME/dotfiles/nvim'})<CR>",
+	-- 	opts("help menu picker"),
 	-- },
-	{
-		"<leader>fr",
-		"<cmd>lua require('fzf-lua').oldfiles()<CR>",
-		opts("Old Files"),
-	},
-	{
-		"<leader>ht",
-		"<cmd>lua require('fzf-lua').colorschemes()<CR>",
-		opts("Colorschemes"),
-	},
-	{
-		"<leader>fg",
-		"<cmd>lua require('fzf-lua').live_grep()<CR>",
-		opts("Grep Directory"),
-	},
-	{
-		"<S-Tab>",
-		"<cmd>lua require('fzf-lua').buffers()<CR>",
-		opts("Buffer Picker"),
-	},
+	--
+	-- {
+	-- 	"<leader>fh",
+	-- 	"<cmd>lua require('fzf-lua').helptags()<CR>",
+	-- 	opts("help menu picker"),
+	-- },
+	-- {
+	-- 	"<leader>fp",
+	-- 	"<cmd>lua require('fzf-lua').files({cwd='~/Documents/Projects/'})<CR>",
+	-- 	opts("Project Files"),
+	-- },
+	-- {
+	-- 	"<leader>fd",
+	-- 	"<cmd>lua require('fzf-lua').files({cwd='~/dotfiles/'})<CR>",
+	-- 	opts("Config Files"),
+	-- },
+	-- {
+	-- 	"<leader>B",
+	-- 	"<cmd>lua require('fzf-lua').buffers()<CR>",
+	-- 	opts("Buffers"),
+	-- },
+	-- {
+	-- 	"<leader>ff",
+	-- 	"<cmd>lua require('fzf-lua').files()<CR>",
+	-- 	opts("Find Files"),
+	-- },
+	-- -- {
+	-- -- 	"<leader>e",
+	-- -- 	"<cmd>lua require('fzf-lua').files({cwd=vim.fn.expand('%:p:h')})<CR>",
+	-- -- 	opts("File Browser"),
+	-- -- },
+	-- {
+	-- 	"<leader>fr",
+	-- 	"<cmd>lua require('fzf-lua').oldfiles()<CR>",
+	-- 	opts("Old Files"),
+	-- },
+	-- {
+	-- 	"<leader>ht",
+	-- 	"<cmd>lua require('fzf-lua').colorschemes()<CR>",
+	-- 	opts("Colorschemes"),
+	-- },
+	-- {
+	-- 	"<leader>fg",
+	-- 	"<cmd>lua require('fzf-lua').live_grep()<CR>",
+	-- 	opts("Grep Directory"),
+	-- },
+	-- {
+	-- 	"<S-Tab>",
+	-- 	"<cmd>lua require('fzf-lua').buffers()<CR>",
+	-- 	opts("Buffer Picker"),
+	-- },
 })
 
 local commandmode_keybindings = Binds:new("c", {
