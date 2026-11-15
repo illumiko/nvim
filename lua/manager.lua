@@ -34,4 +34,24 @@ lazy.setup("plugin", {
 		enabled = true,
 		notify = false, -- get a notification when changes are found
 	},
+	performance = {
+		cache = {
+			enabled = true,
+			ttl = 3600 * 24 * 7, -- Cache for 1 week
+		},
+		reset_packpath = true, -- Improves startup by resetting the package path
+		rtp = {
+			reset = true, -- Resets 'runtimepath' to only $VIMRUNTIME and your config
+			disabled_plugins = { -- Duplicate your built-in disables here
+				"gzip",
+				"matchit",
+				"matchparen",
+				"netrwPlugin",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
+		},
+	},
 })

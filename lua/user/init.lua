@@ -1,10 +1,15 @@
-require("user.keymaps")
-require("user.settings")
-require("user.autocmds")
-require("user.color")
-require("user.highlights")
+vim.loader.enable()
+vim.defer_fn(function()
+	require("user.keymaps")
+	require("user.settings")
+	require("user.autocmds")
+	require("user.color")
+	require("user.highlights")
 
-
+	vim.schedule(function()
+		vim.opt.clipboard = "unnamedplus"
+	end)
+end, 0)
 
 -- require'rose-pine'.setup({styles={transparency = true}})
 -- vim.cmd("colorscheme rose-pine-moon") --giving windline sane colors with nordic
