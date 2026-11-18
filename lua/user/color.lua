@@ -1,2 +1,2 @@
-vim.o.background = "light";
-vim.cmd("colorscheme rose-pine-dawn")
+vim.o.background = "dark";
+vim.cmd("colorscheme rose-pine-moon")

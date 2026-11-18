@@ -96,7 +96,7 @@ return {
 			keymap = {
 				fzf = {
 					true,
-					["ctrl-w"] = "abort",
+					["ctrl-q"] = "abort",
 					["alt-j"] = "down",
 					["alt-k"] = "up",
 				},

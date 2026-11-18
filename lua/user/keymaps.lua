@@ -289,3 +289,5 @@ end)
 -- end
 
 -- return export
+
+vim.opt.clipboard = "unnamedplus"

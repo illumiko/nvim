@@ -63,4 +63,15 @@ M.lazy = {
     event = "VeryLazy",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 }
-return M.lazy
+return {
+    -- lazy
+    {
+        "sontungexpt/witch-line",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        lazy = false, -- Almost component is lazy load by default. So you can set lazy to false
+        opts = {},
+    },
+
+}

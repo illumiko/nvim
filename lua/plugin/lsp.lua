@@ -8,9 +8,18 @@ vim.lsp.enable({
 	"emmet_language_server",
 	"ts_ls",
 	"clangd",
-    "jdtls",
+	"jdtls",
+	"tinymist",
 	-- "rust_analyzer",
 })
+
+vim.lsp.config("tinymist", {
+	settings = {
+		formatterMode = "typstyle",
+		exportPdf = "onType",
+	},
+})
+vim.lsp.enable("tinymist")
 vim.lsp.config["emmet_language_server"] = {
 	filetypes = {
 		"astro",
@@ -50,12 +59,30 @@ vim.lsp.config["gopls"] = {
 		},
 	},
 }
-vim.diagnostic.config({ virtual_text = { current_line = false } })
+-- vim.diagnostic.config({ virtual_text = { current_line = false } })
+
+vim.diagnostic.config({
+	float = {
+		focusable = true,
+		style = "minimal",
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = "",
+		severity_sort = true,
+	},
+	virtual_text = { spacing = 4, prefix = "󰊠" },
+	signs = true,
+	underline = true,
+	update_in_insert = true,
+	severity_sort = true,
+})
 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-vim.treesitter.language.add("cpp")
-vim.treesitter.language.add("python")
-vim.treesitter.language.add("lua")
-vim.treesitter.language.add("go")
+-- vim.lsp.semantic_tokens.enable(false)
+-- vim.treesitter.language.add("cpp")
+-- vim.treesitter.language.add("python")
+-- vim.treesitter.language.add("lua")
+-- vim.treesitter.language.add("go")
 
 return {
 	"neovim/nvim-lspconfig",
@@ -74,7 +101,15 @@ return {
 		event = "LspAttach",
 		opts = {}, -- required, even if empty
 	},
-	"RRethy/vim-illuminate",
+	{
+		"RRethy/vim-illuminate",
+		event = "LspAttach",
+		config = function()
+			require("illuminate").configure({
+				-- your existing options here
+			})
+		end,
+	},
 	{
 		"folke/lazydev.nvim",
 		ft = "lua", -- only load on lua files
@@ -83,6 +118,16 @@ return {
 				-- See the configuration section for more details
 				-- Load luvit types when the `vim.uv` word is found
 				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
+	},
+
+	{
+		"j-hui/fidget.nvim",
+		event = "BufReadPost",
+		opts = {
+			notification = {
+				override_vim_notify = true,
 			},
 		},
 	},

@@ -3,6 +3,10 @@
         "unused-function"
     ],
     "diagnostics.globals": [
-        "vim"
+        "vim",
+        "s",
+        "i",
+        "d",
+        "fmta"
     ]
 }

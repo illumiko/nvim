@@ -47,8 +47,9 @@ M.config = {
 
 M.lazy = {
 	"echasnovski/mini.indentscope",
+	event = { "BufReadPost", "BufNewFile" },
 	version = false,
 	config = M.config,
 }
 
-return M.lazy
+return {}

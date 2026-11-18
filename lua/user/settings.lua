@@ -39,7 +39,7 @@ vim.o.laststatus = 3
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.breakindent = true
-vim.cmd("set shortmess+=cCFAI")
+-- vim.cmd("set shortmess+=cCFAI")
 -- vim.o.wh = 20
 -- vim.o.wiw = 100
 -- vim.o.showbreak = string.rep(" ", 3)
@@ -79,5 +79,88 @@ vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decr
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+-- vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+-- vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+
+
+
+
+
+
+
+
+
+
+
+--
+-- function get_lsp_client()
+--    local msg = "No LSP"
+--    local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+--    local clients = vim.lsp.get_clients { bufnr = 0 }
+--    if next(clients) == nil then return msg end
+--    local client_names = {}
+--    for _, client in pairs(clients) do
+--       table.insert(client_names, client.name)
+--    end
+--    return "[" .. table.concat(client_names, ", ") .. "]"
+-- end
+--
+-- _G.lsp_msg = "" -- Initialize globally
+--
+-- vim.api.nvim_create_autocmd("LspProgress", {
+--    callback = function(ev)
+--       local value = ev.data.params.value
+--       if not value then return end
+--
+--       if value.kind == "end" then
+--          _G.lsp_msg = ""
+--       else
+--          local map = {
+--             title = value.title,
+--             message = value.message,
+--             percentage = value.percentage,
+--          }
+--          local parts = {}
+--          if map.title then table.insert(parts, map.title) end
+--          if map.message then table.insert(parts, map.message) end
+--          if map.percentage then table.insert(parts, map.percentage .. "%") end
+--
+--          _G.lsp_msg = table.concat(parts, " ")
+--       end
+--       vim.cmd "redrawstatus"
+--    end,
+-- })
+-- function _G.get_lsp_status() return _G.lsp_msg end
+--
+-- function get_lint_status()
+--    local diagnostics = vim.diagnostic.get(0)
+--    local counts = { E = 0, W = 0, I = 0, H = 0 }
+--
+--    for _, d in ipairs(diagnostics) do
+--       if d.severity == vim.diagnostic.severity.ERROR then
+--          counts.E = counts.E + 1
+--       elseif d.severity == vim.diagnostic.severity.WARN then
+--          counts.W = counts.W + 1
+--       elseif d.severity == vim.diagnostic.severity.INFO then
+--          counts.I = counts.I + 1
+--       elseif d.severity == vim.diagnostic.severity.HINT then
+--          counts.H = counts.H + 1
+--       end
+--    end
+--
+--    if (counts.E + counts.W + counts.I + counts.H) == 0 then return "" end
+--
+--    return string.format(
+--       "[E: %d W: %d I: %d H: %d]",
+--       counts.E,
+--       counts.W,
+--       counts.I,
+--       counts.H
+--    )
+-- end
+-- vim.opt.statusline =
+--    "%{mode()} %f %m %{v:lua.get_lsp_client()} %{v:lua.get_lsp_status()} %= %{v:lua.get_lint_status()}  %y %p%% %l:%c"
+
+
+

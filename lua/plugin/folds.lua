@@ -9,6 +9,6 @@ local config = function ()
 end
 --
 return {
-'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async',
-config = config
+-- 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async',
+-- config = config
 }

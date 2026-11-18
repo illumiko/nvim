@@ -51,6 +51,7 @@ return {
     ft = {"go","python"},
 	{ --dap view
 		"igorlfs/nvim-dap-view",
+        ft = {"go","python"},
 		---@module 'dap-view'
 		---@type dapview.Config
 		opts = {},
