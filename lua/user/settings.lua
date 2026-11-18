@@ -1,6 +1,6 @@
 vim.o.backup = false -- creates a backup file
 -- vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-vim.o.cmdheight = 3 -- more space in the neovim command line for displaying messages
+vim.o.cmdheight = 0 -- more space in the neovim command line for displaying messages
 vim.o.winborder = "solid"
 vim.opt.colorcolumn = "100" -- fixes indentline for now
 vim.o.conceallevel = 0 -- so that `` is visible in markdown files
