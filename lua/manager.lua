@@ -34,6 +34,7 @@ lazy.setup("plugin", {
 		enabled = true,
 		notify = false, -- get a notification when changes are found
 	},
+    ui = {border="none"},
 	performance = {
 		cache = {
 			enabled = true,

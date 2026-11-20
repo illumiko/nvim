@@ -148,7 +148,12 @@ local confi = function()
 end
 M.lazy = {
 	"mhartington/formatter.nvim",
+	-- ft = {"lua","python","cpp","cp",""},
+    cmd = {"Format","FormatWrite"},
 	config = config,
+	keys = {
+		{ "<leader>F", ":FormatWrite<cr>", desc = "format" },
+	},
 }
 
 return M.lazy

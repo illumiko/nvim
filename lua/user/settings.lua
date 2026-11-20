@@ -1,3 +1,6 @@
+require("vim._core.ui2").enable({
+    enable = true
+})
 vim.o.backup = false -- creates a backup file
 -- vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.o.cmdheight = 0 -- more space in the neovim command line for displaying messages
@@ -81,8 +84,6 @@ vim.o.foldenable = true
 
 -- vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 -- vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-
-
 
 
 

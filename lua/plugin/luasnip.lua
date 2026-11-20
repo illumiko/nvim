@@ -1,6 +1,6 @@
 local M = {}
 local config = function()
-	local ls = require("luasnip")
+	-- local ls = require("luasnip")
 	-- local s = ls.snippet
 	-- local sn = ls.snippet_node
 	-- local t = ls.text_node
@@ -24,7 +24,7 @@ local config = function()
 	-- local opts = require("utils.maps").opts
 
 	-- Every unspecified option will be set to the default.
-	ls.config.set_config({
+	require("luasnip").config.set_config({
 		history = true,
 		-- Update more often, :h events for more info.
 		updateevents = "TextChanged,TextChangedI",
@@ -62,7 +62,6 @@ M.lazy = {
     -- ft = {"cpp","go","lua"},
     keys = {
         {
-
 		"<Leader>ll",
 		'<Cmd>lua require("luasnip.loaders.from_lua").lazy_load({paths = "~/dotfiles/nvim/lua/plugin/snippets/"})<CR>',
 		mode = "n",

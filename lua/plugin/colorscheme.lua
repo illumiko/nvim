@@ -39,11 +39,11 @@ local plugins = {
 	-- 	priority = 1000,
 	-- 	opts = {},
 	-- },
-	-- { "sainnhe/gruvbox-material" },
+	{ "sainnhe/gruvbox-material" },
 	-- { "rockyzhang24/arctic.nvim", branch = "v2" }, --vscode theme pretty good
 	-- { "olimorris/onedarkpro.nvim", priority = 1000 },
 	-- { "rebelot/kanagawa.nvim", lazy = false, config = config.kanagawa },
-	{ "zenbones-theme/zenbones.nvim" },
+	-- { "zenbones-theme/zenbones.nvim" },
 	-- { "kdheepak/monochrome.nvim" },
 	-- { "rktjmp/lush.nvim" },
 	-- { "AlexvZyl/nordic.nvim" },

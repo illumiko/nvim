@@ -5,7 +5,7 @@ local opts = function(x)
 	return { noremap = true, silent = true, desc = x }
 end
 
-local ls = require("luasnip")
+-- local ls = require("luasnip")
 vim.g.mapleader = " "
 
 local Binds = { map_type = "", maps = {} }
@@ -55,6 +55,8 @@ local normal_keybinds = Binds:new("n", {
 	{ [[yi}]], [["+yi}]], opts("") },
 	{ [[yi"]], [["+yi"]], opts("") },
 	{ [[yi)]], [["+yi)]], opts("") },
+    {"<leader>hi",":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>",opts("toggle inlay_hint")},
+
 
 	{
 		[[<leader>wk]],
